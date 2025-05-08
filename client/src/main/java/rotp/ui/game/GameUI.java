@@ -719,7 +719,7 @@ public class GameUI  extends BasePanel implements MouseListener, MouseMotionList
         try {
             buttonClick();
             String filename = manualFilePath();
-            InputStream manualAsStream = fileInputStream(filename);
+            InputStream manualAsStream = inputStream(filename);
             Path tempOutput = Files.createTempFile("ROTP_Manual", ".pdf");
             tempOutput.toFile().deleteOnExit();
             Files.copy(manualAsStream, tempOutput, StandardCopyOption.REPLACE_EXISTING);

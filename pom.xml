@@ -5,7 +5,7 @@
   <groupId>rotp</groupId>
   <artifactId>remnants-of-the-precursors</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>Remnants of the Precursors</name>
 
@@ -17,15 +17,6 @@
     <asm.version>9.8</asm.version>
     <jacoco.version>0.8.13</jacoco.version>
   </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>5.12.2</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 
   <build>
     <plugins>
@@ -124,7 +115,13 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>    </plugins>
+      </plugin>
+    </plugins>
   </build>
+
+  <modules>
+    <module>assets</module>
+    <module>client</module>
+  </modules>
 
 </project>

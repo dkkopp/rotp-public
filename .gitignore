@@ -2,3 +2,5 @@ nbproject
 .DS_Store
 launch4j/Remnants/
 /target/
+/assets/target/
+/client/target/

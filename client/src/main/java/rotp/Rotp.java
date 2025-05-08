@@ -23,7 +23,6 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import javax.swing.JFrame;
 import rotp.model.game.GameSession;

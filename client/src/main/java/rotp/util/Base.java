@@ -40,21 +40,22 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.jar.JarFile;
-import java.util.zip.ZipEntry;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 import rotp.Rotp;
+import rotp.assets.Assets;
 import rotp.model.empires.Empire;
 import rotp.model.galaxy.Galaxy;
 import rotp.model.galaxy.StarSystem;
@@ -1138,21 +1139,14 @@ public interface Base
       //("Base.icon() -- resource is empty or null");
       return null;
     }
-    URL resource = null;
-    try
-    {
-      resource = url(n);
-    }
-    catch (Exception e)
-    {
-      err("Base.icon() -- error retrieving resource: ", n + " : ", e.getMessage());
-      return null;
-    }
+
+    URL resource = Assets.class.getResource("/rotp/" + n);
+
     if (resource == null)
     {
       if (logError)
       {
-        err("Base.icon() -- Resource not found:", n);
+        err("Base.icon() -- Resource not found: ", n);
       }
       return null;
     }
@@ -1165,27 +1159,6 @@ public interface Base
   public default File file(String n)
   {
     return new File(Rotp.jarPath(), n);
-  }
-
-  public default InputStream fileInputStream(String n)
-  {
-    String fullString = "../rotp/" + n;
-
-    try
-    {
-      return new FileInputStream(new File(Rotp.jarPath(), n));
-    }
-    catch (FileNotFoundException e)
-    {
-      try
-      {
-        return new FileInputStream(fullString);
-      }
-      catch (FileNotFoundException ex)
-      {
-        return Rotp.class.getResourceAsStream(n);
-      }
-    }
   }
 
   public default boolean readerExists(String n)
@@ -1233,53 +1206,11 @@ public interface Base
 
   public default BufferedReader reader(String n)
   {
-    String fullString = "../rotp/" + n;
-    FileInputStream fis = null;
-    InputStreamReader in = null;
-    InputStream zipStream = null;
+    final String fullString = "/rotp/" + n;
+    final InputStream stream = Assets.class.getResourceAsStream(fullString);
+    final Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
 
-    try
-    {
-      fis = new FileInputStream(new File(Rotp.jarPath(), n));
-    }
-    catch (FileNotFoundException e)
-    {
-      try
-      {
-        fis = new FileInputStream(fullString);
-      }
-      catch (FileNotFoundException ex)
-      {
-        zipStream = Rotp.class.getResourceAsStream(n);
-      }
-    }
-
-    try
-    {
-      if (fis != null)
-      {
-        in = new InputStreamReader(fis, "UTF-8");
-      }
-      else if (zipStream != null)
-      {
-        in = new InputStreamReader(zipStream, "UTF-8");
-      }
-      else
-      {
-        err("Base.reader() -- FileNotFoundException:", n);
-      }
-    }
-    catch (IOException ex)
-    {
-      err("Base.reader() -- UnsupportedEncodingException: ", n);
-    }
-
-    if (in == null)
-    {
-      return null;
-    }
-
-    return new BufferedReader(in);
+    return new BufferedReader(reader);
   }
 
   public default PrintWriter writer(String n)
@@ -1300,48 +1231,8 @@ public interface Base
 
   public default InputStream inputStream(String n)
   {
-    InputStream stream = null;
-    File fontFile = new File(n);
-    if (fontFile.exists())
-            try
-    {
-      stream = new FileInputStream(fontFile);
-    }
-    catch (FileNotFoundException e)
-    {
-      err("Base.fileStream -- FileNotFoundException: " + n);
-    }
-    else
-    {
-      JarFile jarFile = null;
-      try
-      {
-        jarFile = new JarFile(Rotp.jarFileName);
-        ZipEntry ze = jarFile.getEntry(n);
-        if (ze != null)
-        {
-          stream = jarFile.getInputStream(ze);
-        }
-      }
-      catch (IOException e)
-      {
-        err("Base.fileStream -- IOException: " + n);
-      }
-      finally
-      {
-        try
-        {
-          if (jarFile != null)
-          {
-            jarFile.close();
-          }
-        }
-        catch (IOException e)
-        {
-        }
-      }
-    }
-    return stream;
+    final String fullString = "/rotp/" + n;
+    return Assets.class.getResourceAsStream(fullString);
   }
 
   public default OutputStream outputStream(String s) throws IOException

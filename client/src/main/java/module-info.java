@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/module-info.java to edit this template
  */
 
-module rotp
+module rotp.client
 {
   requires java.desktop;
+
+  requires rotp.assets;
 }
