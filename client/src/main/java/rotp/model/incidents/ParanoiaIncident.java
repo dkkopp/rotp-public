@@ -53,13 +53,13 @@ public class ParanoiaIncident extends DiplomaticIncident {
         if (ev.owner().leader().isXenophobic())
             multiplier *= 2;
         if (ev.owner().leader().isDiplomat())
-            multiplier /= 1.5;
+            multiplier /= 1.5f;
         
         // if not allied, increase denominator
         if (!ev.owner().alliedWith(empYou))
             multiplier /= 2;
         else if (ev.owner().pactWith(empYou))
-            multiplier /= 1.5;
+            multiplier /= 1.5f;
         else if (ev.owner().atWarWith(empYou))
             multiplier *= 2;
 

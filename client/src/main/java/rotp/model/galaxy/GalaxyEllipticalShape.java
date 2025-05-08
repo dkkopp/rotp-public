@@ -41,7 +41,7 @@ public class GalaxyEllipticalShape extends GalaxyShape {
         options2.add("SETUP_VOID_4");
     }
 
-    Shape ellipse, hole;
+    transient Shape ellipse, hole;
     float ellipseRatio = 2.0f;
     float voidSize = 0.0f;
 	

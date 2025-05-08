@@ -49,8 +49,8 @@ import rotp.ui.main.SystemPanel;
 public final class SetupGalaxyUI  extends BasePanel implements MouseListener, MouseMotionListener, MouseWheelListener {
     private static final long serialVersionUID = 1L;
     public static int MAX_DISPLAY_OPPS = 49;
-    BufferedImage backImg, playerRaceImg;
-    BufferedImage smBackImg;
+    transient BufferedImage backImg, playerRaceImg;
+    transient BufferedImage smBackImg;
     Rectangle backBox = new Rectangle();
     Rectangle startBox = new Rectangle();
     Rectangle settingsBox = new Rectangle();
@@ -79,7 +79,7 @@ public final class SetupGalaxyUI  extends BasePanel implements MouseListener, Mo
     Rectangle[] oppSet = new Rectangle[MAX_DISPLAY_OPPS];
     Rectangle[] oppAI = new Rectangle[MAX_DISPLAY_OPPS];
 
-    Shape hoverBox;
+    transient Shape hoverBox;
     boolean starting = false;
     int leftBoxX, rightBoxX, boxW, boxY, leftBoxH, rightBoxH;
     int galaxyX, galaxyY, galaxyW, galaxyH;

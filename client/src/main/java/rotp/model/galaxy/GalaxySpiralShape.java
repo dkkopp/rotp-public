@@ -50,7 +50,7 @@ public class GalaxySpiralShape extends GalaxyShape {
     float armOffsetMax = 0.7f;
     float rotationFactor = 0;
     float armSeparationDistance = 2 * (float)Math.PI / numArms;
-    Shape circle;
+    transient Shape circle;
     float adjust_density = 1.0f; //unused
 	
     float randomX = 0;

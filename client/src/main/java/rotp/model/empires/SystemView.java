@@ -67,8 +67,8 @@ public class SystemView implements IMappedObject, Base, Serializable {
     private String vName = "";
     private Planet vPlanet;
     private String vPlanetTypeKey;
-    private final List<ShipFleet> vOrbitingFleets = new ArrayList<>();
-    private final List<ShipFleet> vExitingFleets = new ArrayList<>();
+    private transient final List<ShipFleet> vOrbitingFleets = new ArrayList<>();
+    private transient final List<ShipFleet> vExitingFleets = new ArrayList<>();
     private boolean vGuarded = false;
     private int vBases = 0;
     private int vShieldLevel = 0;

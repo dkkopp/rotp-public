@@ -71,9 +71,9 @@ public final class SaveGameUI extends BasePanel implements MouseListener, MouseW
   private final BaseTextField newFileField = new BaseTextField("");
 
   FileListingPanel listingPanel;
-  List<String> saveFiles = new ArrayList<>();
-  List<Long> saveSizes = new ArrayList<>();
-  List<String> saveDates = new ArrayList<>();
+  transient List<String> saveFiles = new ArrayList<>();
+  transient List<Long> saveSizes = new ArrayList<>();
+  transient List<String> saveDates = new ArrayList<>();
   int selectIndex = -1;
   Rectangle hoverBox;
   Rectangle selectBox;
@@ -88,8 +88,8 @@ public final class SaveGameUI extends BasePanel implements MouseListener, MouseW
   private final Rectangle fileNameBox = new Rectangle();
   private final Rectangle fileSizeBox = new Rectangle();
   private final Rectangle fileDateBox = new Rectangle();
-  private LinearGradientPaint[] saveBackC;
-  private LinearGradientPaint[] cancelBackC;
+  transient private LinearGradientPaint[] saveBackC;
+  transient private LinearGradientPaint[] cancelBackC;
 
   public SaveGameUI()
   {

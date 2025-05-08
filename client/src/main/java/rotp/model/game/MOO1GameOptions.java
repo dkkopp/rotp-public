@@ -40,8 +40,8 @@ public class MOO1GameOptions implements Base, IGameOptions, Serializable {
     private static final long serialVersionUID = 1L;
     private static final float BASE_RESEARCH_MOD = 30f;
     private final String[] opponentRaces = new String[MAX_OPPONENTS];
-    private final List<Integer> colors = new ArrayList<>();
-    private final List<Color> empireColors = new ArrayList<>();
+    private transient final List<Integer> colors = new ArrayList<>();
+    private transient final List<Color> empireColors = new ArrayList<>();
     private final NewPlayer player = new NewPlayer();
 
     private String selectedGalaxySize;
@@ -58,9 +58,9 @@ public class MOO1GameOptions implements Base, IGameOptions, Serializable {
     private String selectedNebulaeOption;
     private String selectedCouncilWinOption;
     private int selectedNumberOpponents;
-    private boolean communityAI = false;  // unused
+    //private boolean communityAI = false;  // unused
     private boolean disableRandomEvents = false;
-    private boolean disableColonizePrompt = false; // unused
+    //private boolean disableColonizePrompt = false; // unused
     private String selectedStarDensityOption;
     private String selectedPlanetQualityOption;
     private String selectedTerraformingOption;
@@ -375,7 +375,7 @@ public class MOO1GameOptions implements Base, IGameOptions, Serializable {
         */
         int nStars = numberStarSystems();
         float sizeMult = nebulaSizeMult();
-        int nNeb = (int) nStars/20;
+        int nNeb = nStars/20;
         
         return (int) (freq*nNeb/sizeMult/sizeMult);
     }

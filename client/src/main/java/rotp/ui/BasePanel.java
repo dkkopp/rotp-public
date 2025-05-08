@@ -73,11 +73,8 @@ public class BasePanel extends JPanel implements Base
 
   protected int starScrollX = 0;
 
-  @SuppressWarnings("serial")
-  protected BufferedImage starBackground;
-
-  @SuppressWarnings("serial")
-  protected Image screenBuffer;
+  protected transient BufferedImage starBackground;
+  protected transient Image screenBuffer;
 
   public static GraphicsConfiguration gc()
   {

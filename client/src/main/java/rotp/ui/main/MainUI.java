@@ -81,26 +81,26 @@ public class MainUI extends BasePanel implements IMapHandler {
     
     JLayeredPane layers = new JLayeredPane();
 
-    MapOverlayNone overlayNone;
-    MapOverlayMemoryLow overlayMemoryLow;
-    MapOverlayJava32Bit overlayJava32Bit;
-    MapOverlayAutosaveFailed overlayAutosaveFailed;
-    MapOverlayShipsConstructed overlayShipsConstructed;
-    MapOverlaySpies overlaySpies;
-    MapOverlayAllocateSystems overlayAllocateSystems;
-    MapOverlaySystemsScouted overlaySystemsScouted;
-    MapOverlayEspionageMission overlayEspionageMission;
-    MapOverlayColonizePrompt overlayColonizePrompt;
-    MapOverlayBombardPrompt overlayBombardPrompt;
-    MapOverlayBombardedNotice overlayBombardedNotice;
-    MapOverlayShipCombatPrompt overlayShipCombatPrompt;
-    MapOverlayAdvice overlayAdvice;
-    AlertDismissSprite alertDismissSprite;
-    HelpSprite helpSprite;
-    MapOverlay overlay;
+    transient MapOverlayNone overlayNone;
+    transient MapOverlayMemoryLow overlayMemoryLow;
+    transient MapOverlayJava32Bit overlayJava32Bit;
+    transient MapOverlayAutosaveFailed overlayAutosaveFailed;
+    transient MapOverlayShipsConstructed overlayShipsConstructed;
+    transient MapOverlaySpies overlaySpies;
+    transient MapOverlayAllocateSystems overlayAllocateSystems;
+    transient MapOverlaySystemsScouted overlaySystemsScouted;
+    transient MapOverlayEspionageMission overlayEspionageMission;
+    transient MapOverlayColonizePrompt overlayColonizePrompt;
+    transient MapOverlayBombardPrompt overlayBombardPrompt;
+    transient MapOverlayBombardedNotice overlayBombardedNotice;
+    transient MapOverlayShipCombatPrompt overlayShipCombatPrompt;
+    transient MapOverlayAdvice overlayAdvice;
+    transient AlertDismissSprite alertDismissSprite;
+    transient HelpSprite helpSprite;
+    transient MapOverlay overlay;
 
-    private final List<Sprite> nextTurnControls = new ArrayList<>();
-    private final List<Sprite> baseControls = new ArrayList<>();
+    private transient final List<Sprite> nextTurnControls = new ArrayList<>();
+    private transient final List<Sprite> baseControls = new ArrayList<>();
 
     protected SpriteDisplayPanel displayPanel;
     protected GalaxyMapPanel map;

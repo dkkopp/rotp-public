@@ -67,7 +67,7 @@ public class ShipBomberTemplate implements Base {
                 wpnDamage = d.wpnCount(i) * wpn.firepower(target.shieldLevel);
                 // +15% damage for each weapon computer level
                 // this estimates increased dmg from +hit
-                wpnDamage *= (1+ (.15*wpn.computerLevel()));
+                wpnDamage *= (1+ (.15f * wpn.computerLevel()));
             }
             totalDamage += wpnDamage;
         }
@@ -330,7 +330,7 @@ public class ShipBomberTemplate implements Base {
         // modnar: use only 40% space for bombs
         // with some minimum amount of space, 40 (or all of available space)
         // and some maxium amount of space, 1000
-        float spaceForBombs = (float) Math.min(Math.max(0.4f * d.availableSpace(), Math.min(40, d.availableSpace())), 1000);
+        float spaceForBombs = Math.min(Math.max(0.4f * d.availableSpace(), Math.min(40, d.availableSpace())), 1000);
         int numWeapons = (int) (spaceForBombs/wpn.space(d));
 
         mockDesign.wpnCount(wpnSlot, numWeapons);

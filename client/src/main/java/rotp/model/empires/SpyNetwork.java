@@ -56,11 +56,9 @@ public final class SpyNetwork implements Base, Serializable
   }
 
   private final EmpireView view;
-  @SuppressWarnings("serial")
-  private final List<Spy> activeSpies = new ArrayList<>();
+  private transient final List<Spy> activeSpies = new ArrayList<>();
   private final TechTree tech = new TechTree();
-  @SuppressWarnings("serial")
-  private final List<ShipView> shipViews = new ArrayList<>();
+  private transient final List<ShipView> shipViews = new ArrayList<>();
   private int maxSpies = 1;
 
   // from 0-20 ticks, with each tick representing 0.5% of total empire production
@@ -71,8 +69,7 @@ public final class SpyNetwork implements Base, Serializable
   private int lastSpyDate = -1;
 
   private final FleetView fleetView = new FleetView();
-  @SuppressWarnings("serial")
-  private List<String> possibleTechs = new ArrayList<>();
+  private transient List<String> possibleTechs = new ArrayList<>();
   private int threatened = 0;
   private SpyReport report = new SpyReport();
   private transient List<StarSystem> baseTargets;

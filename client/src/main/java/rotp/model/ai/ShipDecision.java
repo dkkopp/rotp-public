@@ -26,7 +26,7 @@ public class ShipDecision implements Base, Serializable {
     private static final long serialVersionUID = 1L;
     public ShipPlan shipPlan;
     public int sysId = StarSystem.NULL_ID;
-    public FleetOrders fleetOrders;
+    public transient FleetOrders fleetOrders;
     public float shipCurrPriority = Float.MAX_VALUE;
     public float turns;
     public ShipDesign bestDesign;

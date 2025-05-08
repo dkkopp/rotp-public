@@ -35,8 +35,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -114,20 +114,20 @@ public class GameUI  extends BasePanel implements MouseListener, MouseMotionList
     int fuzzSc = 2;
     int diff = s60;
     int languageX;
-    BaseText discussText, continueText, newGameText, loadGameText, saveGameText, settingsText, exitText, restartText;
-    BaseText versionText, manualText;
-    BaseText developerText, artistText, graphicDsnrText, writerText, soundText, translatorText, slideshowText;
-    BaseText shrinkText, enlargeText;
-    BaseText hoverBox;
+    transient BaseText discussText, continueText, newGameText, loadGameText, saveGameText, settingsText, exitText, restartText;
+    transient BaseText versionText, manualText;
+    transient BaseText developerText, artistText, graphicDsnrText, writerText, soundText, translatorText, slideshowText;
+    transient BaseText shrinkText, enlargeText;
+    transient BaseText hoverBox;
     Rectangle languageBox = new Rectangle();
     boolean mouseDepressed = false;
     boolean hideText = false;
     int startingScale = 100;
     String startingDisplayMode;
     public static Image defaultBackground;
-    Image backImg1, backImg2;
-    BufferedImage titleImg;
-    BufferedImage backImg;
+    transient Image backImg1, backImg2;
+    transient BufferedImage titleImg;
+    transient BufferedImage backImg;
     String imageKey1, imageKey2;
     int animationTimer = BG_DURATION;
     private final GameLanguagePane languagePanel;
@@ -663,11 +663,11 @@ public class GameUI  extends BasePanel implements MouseListener, MouseMotionList
         int k = e.getKeyCode();
         switch (k) {
             case KeyEvent.VK_MINUS:
-                if ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)
+                if ((e.getModifiersEx()& KeyEvent.CTRL_DOWN_MASK) != 0)
                     shrinkFrame(); 
                 return;
             case KeyEvent.VK_EQUALS: 
-                if ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)
+                if ((e.getModifiersEx()& KeyEvent.CTRL_DOWN_MASK) != 0)
                     expandFrame(); 
                 return;
             case KeyEvent.VK_Z:  hideText = true; repaint(); return;
@@ -712,7 +712,7 @@ public class GameUI  extends BasePanel implements MouseListener, MouseMotionList
     private void openRedditPage() {
         try {
             buttonClick();
-            Desktop.getDesktop().browse(new URL("http://www.reddit.com/r/rotp").toURI());
+            Desktop.getDesktop().browse(new URI("http://www.reddit.com/r/rotp"));
         } catch (IOException | URISyntaxException e) {}
     }
     private void openManual() {
@@ -886,8 +886,8 @@ public class GameUI  extends BasePanel implements MouseListener, MouseMotionList
     }
     public class GameLanguagePane extends BasePanel implements MouseListener, MouseMotionListener {
         private static final long serialVersionUID = 1L;
-        List<String> names;
-        List<String> codes;
+        transient List<String> names;
+        transient List<String> codes;
         public int w;
         public int h;
         boolean fontsInitialized = false;

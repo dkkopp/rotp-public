@@ -305,9 +305,9 @@ public class AIScientist implements Base, Scientist {
         val *= 2;
         // extra important for races with ground attack bonuses
         if (empire.groundAttackBonus() > 0)
-            val *= 1.5;
+            val *= 1.5f;
         // armor has wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -333,7 +333,7 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isEcologist())
             adj *= 3;
         if (empire.leader().isExpansionist())
-            adj *= 1.5;
+            adj *= 1.5f;
 
         return adj*val;
     }
@@ -348,7 +348,7 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_REPAIR] > 0)
             val *= 2;
@@ -369,9 +369,9 @@ public class AIScientist implements Base, Scientist {
 
         // battle computers more highly valued by more aggressive leader types
         if (empire.leader().isAggressive())
-            val *= 1.5;
+            val *= 1.5f;
         else if (empire.leader().isRuthless())
-            val *= 1.5;
+            val *= 1.5f;
         else if (empire.leader().isMilitarist())
             val *= 2;
 
@@ -386,9 +386,9 @@ public class AIScientist implements Base, Scientist {
         float val = t.level;
         
         if (empire.leader().isAggressive())
-            val *= 1.5;
+            val *= 1.5f;
         else if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
         
         if (empire.combatTransportPct() > 0)
             val *= 2;
@@ -401,7 +401,7 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_BEAM_FOCUS] > 0)
             val *= 2;
@@ -431,9 +431,9 @@ public class AIScientist implements Base, Scientist {
 
         float adj = 1.0f;
         if (empire.leader().isPacifist())
-            adj *= 2.0;
+            adj *= 2.0f;
         if (empire.leader().isHonorable())
-            adj *= 1.5;
+            adj *= 1.5f;
 
         return adj * baseVal;
     }
@@ -462,11 +462,11 @@ public class AIScientist implements Base, Scientist {
 
         float adj = 1.0f;
         if (empire.leader().isRuthless())
-            adj *= 2.0;
+            adj *= 2.0f;
         if (empire.leader().isEcologist())
-            adj *= 0.75;
+            adj *= 0.75f;
         if (empire.leader().isHonorable())
-            adj *= 0.5;
+            adj *= 0.5f;
         
         return adj * baseVal;
     }
@@ -477,10 +477,10 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // BHG has wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -497,10 +497,10 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // bombs have wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -510,9 +510,9 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         if (empire.leader().isAggressive())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_CLOAK] > 0)
             val *= 2;
@@ -527,7 +527,7 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isExpansionist())
             adj *= 2;
         if (empire.leader().isTechnologist())
-            adj *= 1.5;
+            adj *= 1.5f;
         if (empire.tech().topCloningTech() == null)
             return adj * t.level / empire.growthRateMod();
         else
@@ -538,15 +538,15 @@ public class AIScientist implements Base, Scientist {
         float val = t.level;
         // extra important for races with ground attack bonuses
         if (empire.groundAttackBonus() > 0)
-            val *= 1.5;
+            val *= 1.5f;
         // Combat Transporter is priority for aggressive and militarist
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // Combat Transporter have wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -567,7 +567,7 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isExpansionist())
             adj *= 2;
         if (empire.leader().isEcologist())
-            adj *= 1.5;
+            adj *= 1.5f;
 
         int numRaces = empire.contactedEmpires().size() + 1;
         // multiply tech level by # new planets possible vs. # known races
@@ -587,13 +587,13 @@ public class AIScientist implements Base, Scientist {
         float val = 50 / 15.0f * (t.damage - currVal);
         // pacifists and militarists both like defensive value
         if (empire.leader().isPacifist())
-            val *= 1.5;
+            val *= 1.5f;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // modnar: add in wartime scaling
         // Shields have wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -603,9 +603,9 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         if (empire.leader().isAggressive())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         return adj * val;
     }
@@ -621,10 +621,10 @@ public class AIScientist implements Base, Scientist {
         float val = 5 * (t.mark - currMark);
         // technologists love outsmarting others
         if (empire.leader().isTechnologist())
-            val *= 1.5;
+            val *= 1.5f;
         // pacifists like defensive value
         if (empire.leader().isPacifist())
-            val *= 1.25;
+            val *= 1.25f;
 
         return val;
     }
@@ -658,11 +658,11 @@ public class AIScientist implements Base, Scientist {
         // The first warp above 2 significantly aids troops and expansion
         if (curr.warp() == 2) {
             if (empire.leader().isMilitarist())
-                adj *= 1.25;
+                adj *= 1.25f;
             if (empire.leader().isAggressive())
-                adj *= 1.25;
+                adj *= 1.25f;
             if (empire.leader().isExpansionist())
-                adj *= 1.5;
+                adj *= 1.5f;
         }
         
         return adj * val;
@@ -678,9 +678,9 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         if (empire.leader().isAggressive())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_PULSARS] > 0)
             val *= 2;
@@ -712,7 +712,7 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isExpansionist())
             adj *= 2;
         if (empire.leader().isDiplomat())
-            adj *= 1.5;
+            adj *= 1.5f;
 
         return adj * val;
     }
@@ -752,15 +752,15 @@ public class AIScientist implements Base, Scientist {
         float val = 1.67f * (t.combatMod-topCombatMod);
         // extra important for races with ground attack bonuses
         if (empire.groundAttackBonus() > 0)
-            val *= 1.5;
+            val *= 1.5f;
         // pacifists love shields! xenos, too
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // troop weapons have wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -784,7 +784,7 @@ public class AIScientist implements Base, Scientist {
         float val = 10 / 3.5f * (currCost / t.factoryCost);
         // industrialists love factories! economists, too
         if (empire.leader().isIndustrialist())
-            val *= 1.5;
+            val *= 1.5f;
 
         return val*adj;
     }
@@ -802,7 +802,7 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isEcologist())
             val *= 2;
         if (empire.leader().isExpansionist())
-            val *= 1.5;
+            val *= 1.5f;
 
         return val;
     }
@@ -832,11 +832,11 @@ public class AIScientist implements Base, Scientist {
         float val = 0.5f * (t.baseBlockPct - currVal);
         // pacifists and militarists both like defensive value
         if (empire.leader().isTechnologist())
-            val *= 2.0;
+            val *= 2.0f;
         if (empire.leader().isPacifist())
-            val *= 1.5;
+            val *= 1.5f;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_MISS_SHIELD] > 0)
             val *= 2;
@@ -859,10 +859,10 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // missiles have wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
         
@@ -888,13 +888,13 @@ public class AIScientist implements Base, Scientist {
         float val = 1.67f * (t.groundAttackBonus-topBonus);
         // extra important for races with ground attack bonuses
         if (empire.groundAttackBonus() > 0)
-            val *= 1.5;
+            val *= 1.5f;
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isPacifist())
-            val *= 1.5;
+            val *= 1.5f;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // troop shields have wartime value: multiply by current war enemies
         val *= sqrt(empire.numEnemies()+1);
@@ -912,12 +912,12 @@ public class AIScientist implements Base, Scientist {
         // scale add'l prevention assuming 20 dmg prevented is best (level 50)
         float val = 2.5f * (t.damage-currDmg);
         // shields are just a generally valuable tech
-        val *= 1.5;
+        val *= 1.5f;
         // pacifists love shields! xenos, too
         if (empire.leader().isPacifist())
             val *= 2;
         if (empire.leader().isXenophobic())
-            val *= 1.5;
+            val *= 1.5f;
 
         // planet shields have wartime value: multiply by current war enemies
         val *= sqrt(empire.numEnemies()+1);
@@ -930,7 +930,7 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_REPULSOR] > 0)
             val *= 2;
@@ -949,7 +949,7 @@ public class AIScientist implements Base, Scientist {
         float val = 10 * (t.mark-currMark);
         // robotic controls are just a generally valuable tech
         // modnar: with corrected scaling, adjust up by *1.5 should be fine
-        val *= 1.5;
+        val *= 1.5f;
         // industrialists love factories! economists, too
         if (empire.leader().isIndustrialist())
             val *= 2;
@@ -971,11 +971,11 @@ public class AIScientist implements Base, Scientist {
         float val = 10 * (t.defenseBonus - topDefense);
         // ship combat centric races prefer this
         if (empire.shipAttackBonus() > 0)
-            val *= 2.0;
+            val *= 2.0f;
         if (empire.shipDefenseBonus() > 0)
-            val *= 2.0;
+            val *= 2.0f;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_INERTIAL] > 0)
             val *= 2;
@@ -987,9 +987,9 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         if (empire.leader().isTechnologist())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if ((t.speedRed > 0) && (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_WARP_DISSIPATOR] > 0))
             val *= 2;
@@ -1019,10 +1019,10 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isAggressive())
             val *= 2;
         if (empire.leader().isMilitarist())
-            val *= 1.5;
+            val *= 1.5f;
 
         // weapons have wartime value: multiply by current war enemies
-        val *= Math.sqrt(empire.numEnemies()+1);
+        val *= (float) Math.sqrt(empire.numEnemies()+1);
 
         return val;
     }
@@ -1040,7 +1040,7 @@ public class AIScientist implements Base, Scientist {
         if (empire.leader().isEcologist())
             adj *= 2;
         if (empire.leader().isExpansionist())
-            adj *= 1.5;
+            adj *= 1.5f;
         return adj * val;
     }
     @Override
@@ -1059,9 +1059,9 @@ public class AIScientist implements Base, Scientist {
 
         float adj = 1.0f;
         if (empire.leader().isExpansionist())
-            adj *= 1.5;
+            adj *= 1.5f;
         if (empire.leader().isTechnologist())
-            adj *= 1.25;
+            adj *= 1.25f;
 
         return adj * t.level;
     }
@@ -1071,7 +1071,7 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_STASIS] > 0)
             val *= 2;
@@ -1083,7 +1083,7 @@ public class AIScientist implements Base, Scientist {
         float adj = 1.0f;
         
         if (empire.leader().isMilitarist())
-            adj *= 1.25;
+            adj *= 1.25f;
         
         if (empire.dataRace().shipDesignMods[NewShipTemplate.PREF_STREAM_PROJECTOR] > 0)
             val *= 2;
@@ -1100,9 +1100,9 @@ public class AIScientist implements Base, Scientist {
         }
         float adj = 1.0f;
         if (empire.leader().isPacifist())
-            adj *= 1.5;
+            adj *= 1.5f;
         if (empire.leader().isXenophobic())
-            adj *= 1.25;
+            adj *= 1.25f;
 
         if (anyEnemiesHaveTeleporter)
             return adj * t.level * 2;
@@ -1123,9 +1123,9 @@ public class AIScientist implements Base, Scientist {
 
         float adj = 1.0f;
         if (empire.leader().isMilitarist())
-            adj *= 1.5;
+            adj *= 1.5f;
         if (empire.leader().isAggressive())
-            adj *= 1.25;
+            adj *= 1.25f;
 
         return adj * t.level;
     }

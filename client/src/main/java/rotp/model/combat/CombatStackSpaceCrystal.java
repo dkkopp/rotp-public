@@ -33,6 +33,7 @@ public class CombatStackSpaceCrystal extends CombatStack {
         captain = new CrystalShipCaptain();
         image = image("SPACE_CRYSTAL");
     }    
+    @Override
     public float missileInterceptPct(ShipWeaponMissileType wpn)   {
         return max(0, 0.75f - (0.01f * wpn.tech().level));
     }
@@ -88,9 +89,9 @@ public class CombatStackSpaceCrystal extends CombatStack {
         
         brighten = 1.0f;
         for (int i=0;i<2;i++) {
-            scale += 1.5;
-            transparency -= 0.45;
-            brighten -= .005;
+            scale += 1.5f;
+            transparency -= 0.45f;
+            brighten -= .005f;
             long t0 = System.currentTimeMillis();
             mgr.ui.paintAllImmediately();
             long t1 = System.currentTimeMillis() - t0;
@@ -98,8 +99,8 @@ public class CombatStackSpaceCrystal extends CombatStack {
                 sleep(50-t1);
         }
         for (int i=0;i<12;i++) {
-            scale -= 0.25;
-            transparency += 0.075;
+            scale -= 0.25f;
+            transparency += 0.075f;
             brighten -= 0.075f;
             long t0 = System.currentTimeMillis();
             mgr.ui.paintAllImmediately();

@@ -20,31 +20,52 @@ import rotp.model.empires.Empire;
 import rotp.model.galaxy.NamedObject;
 import rotp.util.Base;
 
-public class SystemDestroyedEvent implements Base, Serializable, StarSystemEvent {
-    private static final long serialVersionUID = 1L;
-    NamedObject attacker;
-    int turn;
-    public SystemDestroyedEvent(NamedObject att) {
-        turn = galaxy().numberTurns();
-        attacker = att;
+public class SystemDestroyedEvent implements Base, Serializable, StarSystemEvent
+{
+  private static final long serialVersionUID = 1L;
+  transient NamedObject attacker;
+  int turn;
+
+  public SystemDestroyedEvent(NamedObject att)
+  {
+    turn = galaxy().numberTurns();
+    attacker = att;
+  }
+
+  @Override
+  public int turn()
+  {
+    return turn;
+  }
+
+  @Override
+  public boolean changesOwnership()
+  {
+    return true;
+  }
+
+  @Override
+  public int owner()
+  {
+    return Empire.NULL_ID;
+  }
+
+  @Override
+  public String description()
+  {
+    if (attacker instanceof Empire emp)
+    {
+      String s = text("SYSEVENT_DESTROYED");
+      s = emp.replaceTokens(s, "alien");
+      return s;
     }
-    @Override
-    public int turn()                    { return turn; }
-    @Override
-    public boolean changesOwnership()    { return true; }
-    @Override
-    public int owner()                   { return Empire.NULL_ID; }
-    @Override
-    public String description() {
-        if (attacker instanceof Empire) {
-            Empire emp = (Empire) attacker;
-            String s = text("SYSEVENT_DESTROYED");
-            s = emp.replaceTokens(s, "alien");
-            return s;
-        }
-        else if (attacker instanceof NamedObject) 
-            return text("SYSEVENT_DESTROYED_MONSTER", attacker.name());
-        else
-            return text("SYSEVENT_DESTROYED_UNKNOWN");
-    } 
+    else if (attacker instanceof NamedObject)
+    {
+      return text("SYSEVENT_DESTROYED_MONSTER", attacker.name());
+    }
+    else
+    {
+      return text("SYSEVENT_DESTROYED_UNKNOWN");
+    }
+  }
 }

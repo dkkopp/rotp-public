@@ -30,7 +30,7 @@ import rotp.util.Base;
 public class RandomEventGeneric   implements Base, Serializable, RandomEvent {
     private static final long serialVersionUID = 1L;
     private String eventKey;
-    private Map<String,Object> eventData = new HashMap<>();
+    private transient Map<String,Object> eventData = new HashMap<>();
     public RandomEventGeneric(String key) {
         eventKey = key;
         initData(key);

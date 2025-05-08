@@ -70,16 +70,16 @@ public final class GalacticCouncilUI extends FadeInPanel implements MouseListene
     private final Rectangle rejectBox = new Rectangle();
     private final Rectangle scrollbar = new Rectangle();
     private final Rectangle voterListBox = new Rectangle();
-    private Shape hoverTarget;
+    private transient Shape hoverTarget;
 
     int dragY;
     private int scrollbarY, scrollYMax = 0;
     private boolean showVoterSummary = false;
-    private RadialGradientPaint diploGradient;
-    private Image background;
+    private transient RadialGradientPaint diploGradient;
+    private transient Image background;
     private Empire displayedDiplomat;
-    private BufferedImage diplomatImg;
-    BufferedImage raceImg;
+    private transient BufferedImage diplomatImg;
+    transient BufferedImage raceImg;
      
     public GalacticCouncilUI() {
         init0();
@@ -962,7 +962,7 @@ public final class GalacticCouncilUI extends FadeInPanel implements MouseListene
             int w0 = diplomatImg.getWidth()*h0/diplomatImg.getHeight();
             Composite prevComp  =  imgG.getComposite();
             if (player().race().diploOpacity < 1) {
-                AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float)player().race().diploOpacity);
+                AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, player().race().diploOpacity);
                 imgG.setComposite(ac);
             }
             imgG.drawImage(dipImg, 0, 0, w, h, 0, 0, w0, h0, null);

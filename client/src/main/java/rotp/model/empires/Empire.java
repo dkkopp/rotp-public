@@ -101,15 +101,15 @@ public final class Empire implements Base, NamedObject, Serializable {
     private int capitalSysId;
     public final SystemInfo sv;
     private final EmpireView[] empireViews;
-    private final List<Ship> visibleShips = new ArrayList<>();
-    private final List<StarSystem> shipBuildingSystems = new ArrayList<>();
-    private final List<StarSystem> colonizedSystems = new ArrayList<>();
+    private transient final List<Ship> visibleShips = new ArrayList<>();
+    private transient final List<StarSystem> shipBuildingSystems = new ArrayList<>();
+    private transient final List<StarSystem> colonizedSystems = new ArrayList<>();
     private boolean extinct = false;
     private boolean galacticAlliance = false;
     private int lastCouncilVoteEmpId = Empire.NULL_ID;
     private Colony.Orders priorityOrders = Colony.Orders.NONE;
     private int bannerColor;
-    private final List<StarSystem> newSystems = new ArrayList<>();
+    private transient final List<StarSystem> newSystems = new ArrayList<>();
     private final EmpireStatus status;
 
     //bounds
@@ -126,7 +126,7 @@ public final class Empire implements Base, NamedObject, Serializable {
     private boolean divertColonyExcessToResearch = false;
     private float totalReserve = 0;
     private float tradePiracyRate = 0;
-    private NamedObject lastAttacker;
+    private transient NamedObject lastAttacker;
     private int defaultMaxBases = UserPreferences.defaultMaxBases();
     private final String dataRaceKey;
     

@@ -190,12 +190,12 @@ public class NewShipTemplate implements Base {
             {
                 //Intertial doesn't add to score because it's already taken into account for in the mitigation
                 if(!design.special(s).isNone() && !design.special(s).isInertial())
-                    specialsMod*=1.26;
+                    specialsMod*=1.26f;
             }
 
             score *= specialsMod;
             float weaponSizeMod = 1.0f;
-            if(role == role.BOMBER && biggestBombSize > 0)
+            if(role == DesignType.BOMBER && biggestBombSize > 0)
                 weaponSizeMod *= bombWpnSize / biggestBombSize;
             else if(biggestShipWeaponSize > 0)
                 weaponSizeMod *= spaceWpnSize / biggestShipWeaponSize;
@@ -208,7 +208,7 @@ public class NewShipTemplate implements Base {
             //System.out.print("\n"+ai.empire().name()+" "+design.name()+" Role: "+role+" size: "+design.size()+" score: "+score+" dmgPerCostLimit: "+dmgPerCostLimit+" tonnageScore: "+design.spaceUsed() / design.cost()+" defscore: "+defScore+" wpnScore: "+weaponSizeMod+" costlimit: "+costLimit+" spaceWpnSize: "+spaceWpnSize+" bomb-adpt: "+ai.bombingAdapted(design)+" specialsMod: "+specialsMod+" absorbPct: "+absorbPct+ " hitPct: "+hitPct);
             designSorter.put(score, design);
             //For bombers we want the smallest that has the best bomb because it's easiest to "dose"
-            if(role == role.BOMBER && weaponSizeMod == 1)
+            if(role == DesignType.BOMBER && weaponSizeMod == 1)
                 break;
         }
         // lastKey is design with greatest damage
@@ -239,7 +239,7 @@ public class NewShipTemplate implements Base {
         ai.lab().nameDesign(d);
         setFastestEngine(ai, d);
         // battle computers are always the priority in MOO1 mechanics
-        if(role != role.DESTROYER)
+        if(role != DesignType.DESTROYER)
             setBestBattleComputer(ai, d); 
         
         float totalSpace = d.availableSpace();
@@ -341,7 +341,7 @@ public class NewShipTemplate implements Base {
             shieldWeight = 0;
         }
         int ecmWeight = 3;    
-        ecmWeight = (int)Math.round(ecmWeight * 2 * enemyMissilePercentage);
+        ecmWeight = Math.round(ecmWeight * 2 * enemyMissilePercentage);
         int maneuverWeight = 2;
         int armorWeight = 3; 
         int specialsWeight = 4; 
@@ -451,6 +451,7 @@ public class NewShipTemplate implements Base {
                 break;
             case DESTROYER:
                 bestNonBomb = setOptimalWeapon(ai, d, d.availableSpace(), 4, needRange, true, false, topSpeed, avgECM, bestSHD, antiDote, true, avgHP); // uses slots 0-3
+                break;
             case FIGHTER:
             default:
                 setOptimalWeapon(ai, d, d.availableSpace() * hybridBombRatio, 1, false, false, false, topSpeed, avgECM, bestSHD, antiDote, false, avgHP);
@@ -458,7 +459,7 @@ public class NewShipTemplate implements Base {
                 break;
         }
         //Since destroyer is always tiny and we want to make sure we have a weapon, the computer is added afterwards
-        if(role == role.DESTROYER)
+        if(role == DesignType.DESTROYER)
             setBestBattleComputer(ai, d); 
         ai.lab().iconifyDesign(d);
         for (int i = 0; i <= 2; ++i) {
@@ -699,7 +700,7 @@ public class NewShipTemplate implements Base {
             {
                 currentScore = 100;
                 if(needRange)
-                    currentScore *= 1.5;
+                    currentScore *= 1.5f;
             }
             else if(tech.isType(Tech.STASIS_FIELD))
             {

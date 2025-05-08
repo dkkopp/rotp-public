@@ -99,8 +99,7 @@ public class GalaxyMapPanel extends BasePanel implements ActionListener, MouseLi
   public static Color gridLight = new Color(160, 160, 160);
   public static Color gridDark = new Color(64, 64, 64);
 
-  @SuppressWarnings("serial")
-  private final IMapHandler parent;
+  private transient final IMapHandler parent;
 
   // static fields shared across all galaxy map panels to keep them 
   // visually in synch
@@ -115,10 +114,8 @@ public class GalaxyMapPanel extends BasePanel implements ActionListener, MouseLi
   private static boolean showGridCircular = false;
 
   private float desiredScale;
-  @SuppressWarnings("serial")
-  private Image mapBuffer;
-  @SuppressWarnings("serial")
-  private Image rangeMapBuffer;
+  private transient Image mapBuffer;
+  private transient Image rangeMapBuffer;
   public static BufferedImage sharedStarBackground;
   public static BufferedImage sharedNebulaBackground;
   private final float zoomBase = 1.1f;
@@ -127,16 +124,13 @@ public class GalaxyMapPanel extends BasePanel implements ActionListener, MouseLi
   private int lastMouseX, lastMouseY;
   private long lastMouseTime;
   private boolean redrawRangeMap = true;
-  @SuppressWarnings("serial")
-  public Sprite hoverSprite;
+  public transient Sprite hoverSprite;
   int backOffsetX = 0;
   int backOffsetY = 0;
   float areaOffsetX = 0;
   float areaOffsetY = 0;
-  @SuppressWarnings("serial")
-  Area shipRangeArea;
-  @SuppressWarnings("serial")
-  Area scoutRangeArea;
+  transient Area shipRangeArea;
+  transient Area scoutRangeArea;
   private int maxMouseVelocity = -1;
   private boolean searchingSprite = false;
 

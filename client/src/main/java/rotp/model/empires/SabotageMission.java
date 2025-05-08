@@ -34,7 +34,7 @@ public class SabotageMission implements Base, Serializable {
 
     private final SpyNetwork spies;
     private final Spy spy;
-    private final List<Empire> empiresToFrame = new ArrayList<>();
+    private transient final List<Empire> empiresToFrame = new ArrayList<>();
     private StarSystem system;
     private int factoriesDestroyed = 0;
     private int missileBasesDestroyed = 0;

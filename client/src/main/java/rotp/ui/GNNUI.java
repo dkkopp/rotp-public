@@ -50,9 +50,9 @@ public class GNNUI extends FadeInPanel implements Base, MouseListener, MouseMoti
     private boolean exited = false;
     private String messageText;
     private String eventId;
-    private Image eventImg;
+    private transient Image eventImg;
     private int frameCtr = 0;
-    private List<Empire> empires;
+    private transient List<Empire> empires;
 
     public GNNUI() {
         outerTextAreaBorder = new ThickBevelBorder(8, textBorderHi2, textBorderHi1, textBorderHi2, textBorderHi1, textBorderLo2, textBorderLo1, textBorderLo2, textBorderLo1);

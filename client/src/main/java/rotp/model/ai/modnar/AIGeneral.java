@@ -103,9 +103,9 @@ public class AIGeneral implements Base, General {
         // Lower desire value for Poor, Ultra-Poor
         // modnar: increase values for poor/ultra-poor
         if (empire.sv.isUltraPoor(sysId))
-            val *= 0.6;
+            val *= 0.6f;
         else if (empire.sv.isPoor(sysId))
-            val *= 0.75;
+            val *= 0.75f;
         else if (empire.sv.isResourceNormal(sysId))
             val *= 1;
         else if (empire.sv.isRich(sysId))
@@ -175,8 +175,8 @@ public class AIGeneral implements Base, General {
             pr *= 2;
         else if (empire.sv.isOrionArtifact(sysId))
             pr *= 3;
-        pr /= Math.sqrt(max(1,empire.sv.distance(sysId)));
-        pr /= Math.sqrt(max(1,empire.sv.bases(sysId)));
+        pr /= (float) Math.sqrt(max(1,empire.sv.distance(sysId)));
+        pr /= (float) Math.sqrt(max(1,empire.sv.bases(sysId)));
         
         // modnar: increase priority based on number of our colonies that are nearby
         // more incentive to create contiguous Empires, less inter-penetrating Empires
@@ -324,13 +324,13 @@ public class AIGeneral implements Base, General {
 
         float baseBCPresent = empire.sv.bases(sys.id)*empire.tech().newMissileBaseCost();
         float bcMultiplier = 1 + (empire.sv.hostilityLevel(sys.id)/2); // modnar: also use hostilityLevel/2 here
-        bcMultiplier *= Math.sqrt(options().aiProductionModifier()); // modnar: scale with difficulty
+        bcMultiplier *= (float) Math.sqrt(options().aiProductionModifier()); // modnar: scale with difficulty
         
         // modnar: include enemyFleetSize, factoring in relative tech levels
         // modnar: separate bomber BC, factor in target colony production, target Empire fleet, production, and planets
         float scalePlanets = (float) Math.pow(targetPlanets, 2/3);
         float harmonicFleet = 2.0f*(enemyFleetSize*16.0f*targetFleet*(targetProd/civProd)/scalePlanets)/(enemyFleetSize + 16.0f*targetFleet*(targetProd/civProd)/scalePlanets); // modnar: harmonic mean
-        float scaleTargetFleet = (float) Math.max(enemyFleetSize, harmonicFleet);
+        float scaleTargetFleet = Math.max(enemyFleetSize, harmonicFleet);
         float bomberNeededBC = bcMultiplier * (baseBCPresent + 3.0f*fact) * (targetTech+10.0f)/(civTech+10.0f);
         float bcNeeded = bcMultiplier * (scaleTargetFleet + 3.0f*fact) * (targetTech+10.0f)/(civTech+10.0f);
         
@@ -483,13 +483,13 @@ public class AIGeneral implements Base, General {
         float baseBCPresent = empire.sv.bases(sys.id)*empire.tech().newMissileBaseCost();
         // set fleet orders for bombardment...
         float bcMultiplier = 1 + (empire.sv.hostilityLevel(sys.id)/2);
-        bcMultiplier *= Math.sqrt(options().aiProductionModifier()); // modnar: scale with difficulty
+        bcMultiplier *= (float) Math.sqrt(options().aiProductionModifier()); // modnar: scale with difficulty
         
         // modnar: include enemyFleetSize, factoring in relative tech levels
         // modnar: separate bomber BC, factor in target colony production, target Empire fleet, production, and planets
         float scalePlanets = (float) Math.pow(targetPlanets, 2/3);
         float harmonicFleet = 2.0f*(fleetSize*12.0f*targetFleet*(targetProd/civProd)/scalePlanets)/(fleetSize + 12.0f*targetFleet*(targetProd/civProd)/scalePlanets); // modnar: harmonic mean
-        float scaleTargetFleet = (float) Math.max(fleetSize, harmonicFleet);
+        float scaleTargetFleet = Math.max(fleetSize, harmonicFleet);
         float bomberNeededBC = bcMultiplier * (baseBCPresent + 3.0f*fact) * (targetTech+10.0f)/(civTech+10.0f);
         float bcNeeded = bcMultiplier * (scaleTargetFleet + 3.0f*fact) * (targetTech+10.0f)/(civTech+10.0f);
         
@@ -524,13 +524,13 @@ public class AIGeneral implements Base, General {
         
         float baseBCPresent = empire.sv.bases(sys.id)*empire.tech().newMissileBaseCost();
         float bcMultiplier = 1 + (empire.sv.hostilityLevel(sys.id)/2);
-        bcMultiplier *= Math.sqrt(options().aiProductionModifier()); // modnar: scale with difficulty
+        bcMultiplier *= (float) Math.sqrt(options().aiProductionModifier()); // modnar: scale with difficulty
         
         // modnar: include enemyFleetSize, factoring in relative tech levels
         // modnar: separate bomber BC, factor in target colony production, target Empire fleet, production, and planets
         float scalePlanets = (float) Math.pow(targetPlanets, 2/3);
         float harmonicFleet = 2.0f*(fleetSize*8.0f*targetFleet*(targetProd/civProd)/scalePlanets)/(fleetSize + 8.0f*targetFleet*(targetProd/civProd)/scalePlanets); // modnar: harmonic mean
-        float scaleTargetFleet = (float) Math.max(fleetSize, harmonicFleet);
+        float scaleTargetFleet = Math.max(fleetSize, harmonicFleet);
         float bomberNeededBC = bcMultiplier * (baseBCPresent + 3.0f*fact) * (targetTech+10.0f)/(civTech+10.0f);
         float bcNeeded = bcMultiplier * (scaleTargetFleet + 3.0f*fact) * (targetTech+10.0f)/(civTech+10.0f);
         
@@ -584,7 +584,7 @@ public class AIGeneral implements Base, General {
         
         // modnar: change sneak attack chance by number of our wars vs. number of their wars
         // try not to get into too many wars, and pile on if target is in many wars
-        float enemyMod = (float) (0.2f * (v.empire().numEnemies() - empire.numEnemies()));
+        float enemyMod = 0.2f * (v.empire().numEnemies() - empire.numEnemies());
         baseChance += enemyMod;
 
         float value = (empire.sv.factories(sys.id) * 10);

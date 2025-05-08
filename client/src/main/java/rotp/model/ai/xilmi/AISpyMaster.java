@@ -59,7 +59,7 @@ public class AISpyMaster implements Base, SpyMaster {
         if (paranoia < 0)
             paranoia = 0;
         //System.out.println(empire.galaxy().currentTurn()+" "+ empire.name()+" counter-espionage: "+paranoia+" mt: "+empire.tech().avgTechLevel()+" ot: "+avgOpponentTechLevel);
-        return min(10, (int)Math.round(paranoia)); // modnar: change max to 10, MAX_SECURITY_TICKS = 10
+        return min(10, Math.round(paranoia)); // modnar: change max to 10, MAX_SECURITY_TICKS = 10
     }
     @Override
     public void setSpyingAllocation(EmpireView v) {

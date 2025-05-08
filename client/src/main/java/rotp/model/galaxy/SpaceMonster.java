@@ -30,8 +30,7 @@ public class SpaceMonster implements Base, NamedObject, Serializable
   private static final long serialVersionUID = 1L;
   protected final String nameKey;
   protected int lastAttackerId;
-  @SuppressWarnings("serial")
-  private final List<Integer> path = new ArrayList<>();
+  private transient final List<Integer> path = new ArrayList<>();
   private transient List<CombatStack> combatStacks = new ArrayList<>();
 
   public Empire lastAttacker()

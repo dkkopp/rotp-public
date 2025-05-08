@@ -20,6 +20,8 @@ import java.util.*;
 import java.util.List;
 import rotp.model.ai.interfaces.ShipCaptain;
 import rotp.model.combat.*;
+import static rotp.model.combat.ShipCombatManager.MAX_X;
+import static rotp.model.combat.ShipCombatManager.MAX_Y;
 import rotp.model.empires.Empire;
 import rotp.model.empires.EmpireView;
 import rotp.model.galaxy.StarSystem;
@@ -537,9 +539,9 @@ public class AIShipCaptain implements Base, ShipCaptain {
         int bestX = st.x;
         int bestY = st.y;
         float safestScore = 0;
-        for(int x = 0; x <= st.mgr.MAX_X; ++x)
+        for(int x = 0; x <= MAX_X; ++x)
         {
-            for(int y = 0; y <= st.mgr.MAX_Y; ++y)
+            for(int y = 0; y <= MAX_Y; ++y)
             {
                 float currentScore = 0;
                 if(!st.mgr.validSquare(x,y))

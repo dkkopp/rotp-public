@@ -43,9 +43,9 @@ public final class SetupRaceUI extends BasePanel implements MouseListener, Mouse
     int MAX_COLORS = 10;
     int FIELD_W;
     int FIELD_H;
-    BufferedImage backImg;
+    transient BufferedImage backImg;
     public static BufferedImage raceBackImg;
-    BufferedImage raceImg;
+    transient BufferedImage raceImg;
     Rectangle hoverBox;
     Rectangle cancelBox = new Rectangle();
     Rectangle nextBox = new Rectangle();

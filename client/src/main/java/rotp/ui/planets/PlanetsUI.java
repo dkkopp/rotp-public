@@ -628,6 +628,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
     public StarSystem systemViewToDisplay()  { return lastSelectedSystem(); }
 
     private List<StarSystem> selectedSystems(){
+        @SuppressWarnings("unchecked")
         List<StarSystem> systems = (List<StarSystem>)sessionVar("COLONYUI_SELECTED_SYSTEMS");
         if (systems == null) {
             systems = new ArrayList<>();
@@ -817,7 +818,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
         PlanetsUI parent;
         Rectangle hoverBox;
         Rectangle helpBox = new Rectangle();
-        Area textureArea;
+        transient Area textureArea;
         public PlanetViewSelectionPanel(PlanetsUI p) {
             parent = p;
             initModel();

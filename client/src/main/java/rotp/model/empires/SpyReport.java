@@ -31,7 +31,7 @@ public class SpyReport implements Base, Serializable {
     public int sabotageMission;
     public int sabotageSystem;
     public int sabotageCount;
-    public List<String> techsLearned = new ArrayList<>();
+    public transient List<String> techsLearned = new ArrayList<>();
  
     public int spiesLost()                       { return spiesLost; }
     public void addSpiesLost()                   { spiesLost++; }

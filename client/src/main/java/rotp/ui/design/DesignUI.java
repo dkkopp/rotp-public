@@ -67,16 +67,16 @@ public class DesignUI extends BasePanel {
     DesignConfigPanel configPanel;
 
     private int pad = 10;
-    private LinearGradientPaint backGradient;
-    private LinearGradientPaint configGradient;
-    private LinearGradientPaint clearBackground;
-    private LinearGradientPaint renameBackground;
-    private LinearGradientPaint scrapBackground;
-    private LinearGradientPaint createBackground;
-    private LinearGradientPaint copyBackground;
-    List<BufferedImage> shipImages = new ArrayList<>();
+    transient private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint configGradient;
+    transient private LinearGradientPaint clearBackground;
+    transient private LinearGradientPaint renameBackground;
+    transient private LinearGradientPaint scrapBackground;
+    transient private LinearGradientPaint createBackground;
+    transient private LinearGradientPaint copyBackground;
+    transient List<BufferedImage> shipImages = new ArrayList<>();
 
-    private Shape hoverTarget;
+    transient private Shape hoverTarget;
     private final Rectangle clearButtonArea = new Rectangle();
     private final Rectangle renameButtonArea = new Rectangle();
     private final Rectangle scrapButtonArea = new Rectangle();
@@ -130,7 +130,7 @@ public class DesignUI extends BasePanel {
     private final ConfirmScrapUI confirmScrapUI;
     private final ConfirmCreateUI confirmCreateUI;
     
-    BufferedImage shipPaneImg;
+    transient BufferedImage shipPaneImg;
 
     int[] shipCounts;
     int[] orbitCounts;
@@ -1397,14 +1397,14 @@ public class DesignUI extends BasePanel {
             g.setColor(darkestBrown);
             g.setFont(narrowFont(17));
            
-            String str = player().tech().topFuelRangeTech().unlimited ? text("SHIP_DESIGN_RANGE_UNLIMITED") : text("SHIP_DESIGN_RANGE_VALUE", (int)des.range());
+            String str = player().tech().topFuelRangeTech().unlimited ? text("SHIP_DESIGN_RANGE_UNLIMITED") : text("SHIP_DESIGN_RANGE_VALUE", des.range());
             sw = g.getFontMetrics().stringWidth(str);
             drawString(g,str, x2-s20-sw, y2);
-            str = text("SHIP_DESIGN_SPEED_VALUE", (int)des.warpSpeed());
+            str = text("SHIP_DESIGN_SPEED_VALUE", des.warpSpeed());
             sw = g.getFontMetrics().stringWidth(str);
             drawString(g,str, x2-s20-sw, y3);
             des.recalculateCost();
-            str = text("SHIP_DESIGN_COST_VALUE", (int)des.cost());
+            str = text("SHIP_DESIGN_COST_VALUE", des.cost());
             sw = g.getFontMetrics().stringWidth(str);
             drawString(g,str, x2-s20-sw, y4);
             str = ""+ (int)des.spaceUsed();
@@ -1767,7 +1767,7 @@ public class DesignUI extends BasePanel {
 
             g.setColor(darkestBrown);
             g.setFont(narrowFont(16));
-            String str = text("SHIP_DESIGN_SPEED_VALUE", (int)des.warpSpeed());
+            String str = text("SHIP_DESIGN_SPEED_VALUE", des.warpSpeed());
             sw = g.getFontMetrics().stringWidth(str);
             drawString(g,str, x3-sw, y2);
             str = ""+fmt(engCost,1);
@@ -2995,8 +2995,8 @@ public class DesignUI extends BasePanel {
         public void mousePressed(MouseEvent mouseEvent) { }
         @Override
         public void mouseReleased(MouseEvent e) {
-            boolean shiftPressed = (e.getModifiers() & InputEvent.SHIFT_MASK) != 0;
-            boolean ctrlPressed = (e.getModifiers() & InputEvent.CTRL_MASK) != 0;
+            boolean shiftPressed = (e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0;
+            boolean ctrlPressed = (e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) != 0;
             
             if (hoverTarget == scrapButtonArea) {
                 softClick(); openScrapDialog(); return;
@@ -3143,8 +3143,8 @@ public class DesignUI extends BasePanel {
             if (shipDesign().active())
                 return;
             
-            boolean shiftPressed = (e.getModifiers() & InputEvent.SHIFT_MASK) != 0;
-            boolean ctrlPressed = (e.getModifiers() & InputEvent.CTRL_MASK) != 0;
+            boolean shiftPressed = (e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0;
+            boolean ctrlPressed = (e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) != 0;
             
             if (hoverTarget == shipImageArea) {
                 if (count < 0)

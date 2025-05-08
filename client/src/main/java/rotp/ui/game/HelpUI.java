@@ -34,7 +34,7 @@ public class HelpUI extends BasePanel implements MouseListener {
     private final Color brownBackC = new Color(240,240,240);
     private final Color brownTextC = new Color(45,14,5);
     
-    List<HelpSpec> specs = new ArrayList<>();
+    transient List<HelpSpec> specs = new ArrayList<>();
     BasePanel parent;
     
     public HelpUI() {

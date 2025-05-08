@@ -52,17 +52,17 @@ public class GameSettingsUI extends BasePanel implements MouseListener, MouseMot
     Rectangle okBox = new Rectangle();
     Rectangle defaultBox = new Rectangle();
     BasePanel parent;
-    BaseText displayModeText;
-    BaseText texturesText;
-    BaseText mouseText;
-    BaseText autoColonizeText;
-    BaseText soundsText;
-    BaseText memoryText;
-    BaseText musicText;
-    BaseText graphicsText;
-    BaseText autoBombardText;
-    BaseText backupTurnsText;
-    BaseText saveDirText;
+    transient BaseText displayModeText;
+    transient BaseText texturesText;
+    transient BaseText mouseText;
+    transient BaseText autoColonizeText;
+    transient BaseText soundsText;
+    transient BaseText memoryText;
+    transient BaseText musicText;
+    transient BaseText graphicsText;
+    transient BaseText autoBombardText;
+    transient BaseText backupTurnsText;
+    transient BaseText saveDirText;
     
     public GameSettingsUI() {
         init0();

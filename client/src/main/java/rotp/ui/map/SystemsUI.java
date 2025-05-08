@@ -89,12 +89,12 @@ public final class SystemsUI extends BasePanel implements IMapHandler, ActionLis
     public static SystemsUI instance;
 
     private GalaxyMapPanel map;
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
     private SystemInfoPanel displayPanel;
     private ExitSystemsButton exitButton;
-    private final List<Sprite> controls = new ArrayList<>();
-    private final Map<Integer,Integer> expandEnRouteSystems = new HashMap<>();
-    private final Map<Integer,Integer> expandGuardedSystems = new HashMap<>();
+    transient private final List<Sprite> controls = new ArrayList<>();
+    transient private final Map<Integer,Integer> expandEnRouteSystems = new HashMap<>();
+    transient private final Map<Integer,Integer> expandGuardedSystems = new HashMap<>();
     Rectangle exploreBox = new Rectangle();
     Rectangle expandBox = new Rectangle();
     Rectangle exploitBox = new Rectangle();
@@ -109,10 +109,10 @@ public final class SystemsUI extends BasePanel implements IMapHandler, ActionLis
     public boolean animate = true;
 
     public int SIDE_PANE_W;
-    private LinearGradientPaint grayBackC;
-    private LinearGradientPaint redBackC;
-    private LinearGradientPaint greenBackC;
-    private LinearGradientPaint brownBackC;
+    transient private LinearGradientPaint grayBackC;
+    transient private LinearGradientPaint redBackC;
+    transient private LinearGradientPaint greenBackC;
+    transient private LinearGradientPaint brownBackC;
 
     public String emptyNotes;
     
@@ -956,7 +956,7 @@ public final class SystemsUI extends BasePanel implements IMapHandler, ActionLis
         }
         Rectangle hoverBox;
         Rectangle helpBox = new Rectangle();
-        Area textureArea;
+        transient Area textureArea;
 
         private void initModel() {
             setOpaque(false);

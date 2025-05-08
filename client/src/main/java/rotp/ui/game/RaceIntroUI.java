@@ -48,9 +48,9 @@ public class RaceIntroUI extends BasePanel implements MouseListener {
     BeginButton button;
     float opacity = 1.0f;
     float opacityDecr = 0.0f;
-    BufferedImage introBack = null;
-    BufferedImage fadeLab = null;
-    LinearGradientPaint backGradient;
+    transient BufferedImage introBack = null;
+    transient BufferedImage fadeLab = null;
+    transient LinearGradientPaint backGradient;
     Color textColor = Color.white;
     public RaceIntroUI() {
         initModel();
@@ -271,9 +271,9 @@ public class RaceIntroUI extends BasePanel implements MouseListener {
     public void mouseExited(MouseEvent e) { }
     class BeginButton extends ButtonPanel {
         private static final long serialVersionUID = 1L;
-        private GradientPaint nextTurnBackground;
-        private GradientPaint nextTurnHoverBackground;
-        private GradientPaint nextTurnDepressedBackground;
+        transient private GradientPaint nextTurnBackground;
+        transient private GradientPaint nextTurnHoverBackground;
+        transient private GradientPaint nextTurnDepressedBackground;
         private final Color nextTurnLightC = new Color(143,174,76);
         private final Color nextTurnDarkC = new Color(26,56,0);
         private final Color nextTurnBorderC = new Color(231,231,231);

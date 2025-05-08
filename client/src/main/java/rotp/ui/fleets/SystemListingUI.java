@@ -71,10 +71,10 @@ public abstract class SystemListingUI extends BasePanel implements MouseListener
     int SYSTEM_FLAG = 5;
 
     private final BasePanel topParent;
-    protected Palette palette;
-    private final List<Sprite> sprites = new ArrayList<>();
-    private final List<List<SystemButton>> rowButtons = new ArrayList<>();
-    SystemButton hoveringButton;
+    transient protected Palette palette;
+    transient private final List<Sprite> sprites = new ArrayList<>();
+    transient private final List<List<SystemButton>> rowButtons = new ArrayList<>();
+    transient SystemButton hoveringButton;
 
     private final Rectangle listBox = new Rectangle();
     Rectangle hoverBox;
@@ -84,9 +84,9 @@ public abstract class SystemListingUI extends BasePanel implements MouseListener
     private int dragY = 0;
     private int lastMouseY;
     private int yOffset = 0;
-    private Sprite hoveringSprite;
-    private Column hoveringHeader;
-    private Column selectedColumn;
+    transient private Sprite hoveringSprite;
+    transient private Column hoveringHeader;
+    transient private Column selectedColumn;
     private boolean redrawHeaders = false;
     final Rectangle listScroller = new Rectangle();
     int startY = 0;

@@ -68,9 +68,9 @@ public final class TechTree implements Base, Serializable {
     private String topSubspaceInterdictorTech;
     private String topShipWeaponTech;
 
-    private List<String> tradedTechs;
-    private List<String> newTechs;
-    private List<TradeTechNotification> tradedTechNotifs;
+    private transient List<String> tradedTechs;
+    private transient List<String> newTechs;
+    private transient List<TradeTechNotification> tradedTechNotifs;
     private boolean[] colonizableHostility = new boolean[13];
     public transient float totalResearchThisTurn = 0;
 

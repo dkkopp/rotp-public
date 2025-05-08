@@ -39,9 +39,9 @@ public abstract class GalaxyShape implements Base, Serializable {
     int genAttempt = 0;
     boolean usingRegions = false;
     boolean fullyInit = false;
-    List<EmpireSystem> empSystems = new ArrayList<>();
+    transient List<EmpireSystem> empSystems = new ArrayList<>();
     public Point.Float orionXY;
-    IGameOptions opts;
+    transient IGameOptions opts;
 
     public int width()          { return width; }
     public int height()         { return height; }
@@ -307,6 +307,7 @@ public abstract class GalaxyShape implements Base, Serializable {
         return false;
     }
     private class ShapeRegion implements Serializable {
+    private static final long serialVersionUID = 1L;
         int num = 0;
         float[] x;
         float[] y;
@@ -329,6 +330,7 @@ public abstract class GalaxyShape implements Base, Serializable {
         }
     }
     public final class EmpireSystem implements Serializable {
+    private static final long serialVersionUID = 1L;
         float[] x = new float[3];
         float[] y = new float[3];
         int num = 0;

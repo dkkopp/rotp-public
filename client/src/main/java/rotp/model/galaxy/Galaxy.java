@@ -49,15 +49,11 @@ public class Galaxy implements Base, Serializable
   private final RandomEvents events = new RandomEvents();
   public final Ships ships = new Ships();
   private final StarSystem[] starSystems;
-  @SuppressWarnings("serial")
-  private List<Nebula> nebulas;
+  private transient List<Nebula> nebulas;
   private final Empire[] empires;
-  @SuppressWarnings("serial")
-  private final List<String> adviceGiven = new ArrayList<>();
-  @SuppressWarnings("serial")
-  private final List<Transport> transports = new ArrayList<>();
-  @SuppressWarnings("serial")
-  private final List<StarSystem> abandonedSystems = new ArrayList<>();
+  private transient final List<String> adviceGiven = new ArrayList<>();
+  private transient final List<Transport> transports = new ArrayList<>();
+  private transient final List<StarSystem> abandonedSystems = new ArrayList<>();
 
   private Empire playerEmpire;
   private Empire orionEmpire; //unused

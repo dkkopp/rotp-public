@@ -47,7 +47,7 @@ public class ExpansionIncident extends DiplomaticIncident {
         if (!ev.owner().alliedWith(empYou))
             multiplier /= 3;
         else if (!ev.owner().pactWith(empYou))
-            multiplier /= 1.5;
+            multiplier /= 1.5f;
         
         // if you are bigger than average but the viewer is 
         // even larger, the penalty is lessened by the square

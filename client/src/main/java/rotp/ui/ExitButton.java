@@ -32,7 +32,7 @@ import rotp.ui.main.SystemPanel;
 
 public class ExitButton extends BasePanel implements MouseListener, MouseMotionListener {
     private static final long serialVersionUID = 1L;
-    private LinearGradientPaint buttonBack;
+    private transient LinearGradientPaint buttonBack;
     private final Color buttonEdgeC = new Color(41,25,12);
     private final Color buttonMidC = new Color(187,122,80);
     private final Color buttonBorderC = new Color(194,181,155);
@@ -40,7 +40,7 @@ public class ExitButton extends BasePanel implements MouseListener, MouseMotionL
     Rectangle buttonBox = new Rectangle();
     int hPad = 0;
     int vPad = 0;
-    Shape textureClip;
+    transient Shape textureClip;
 
     public ExitButton(int w, int h, int vMargin, int hMargin) {
         hPad = hMargin;

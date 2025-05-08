@@ -813,7 +813,7 @@ public class AIDiplomat implements Base, Diplomat {
         if (empire.alliedWith(target.id))
             bribeValue *= 2;
         else if (empire.pactWith(target.id))
-            bribeValue *= 1.5;
+            bribeValue *= 1.5f;
         if (empire.leader().isPacifist())
             bribeValue *= 2;
         

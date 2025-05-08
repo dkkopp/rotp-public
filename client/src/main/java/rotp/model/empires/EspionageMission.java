@@ -34,7 +34,7 @@ public class EspionageMission implements Base, Serializable {
     public Empire framedEmpire;
     // map of category ids and id of highest-rated available tech
     private final HashMap<String, String> techChoices = new HashMap<>();
-    private final List<Empire> empiresToFrame = new ArrayList<>();
+    private transient final List<Empire> empiresToFrame = new ArrayList<>();
     private final HashMap<String, List<String>> techPossibles = new HashMap<>();
 
     public StarSystem targetSystem()   { return targetSystem; }

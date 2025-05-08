@@ -201,8 +201,8 @@ public class AIShipDesigner implements Base, ShipDesigner {
         // one level increase in shield or attack level == 1.1x
         // one level increase in armor == ~1.22x to ~1.07x
         float engineImprv = (float) Math.sqrt( (newDesign.warpSpeed() + 1) / (currDesign.warpSpeed() + 1) );
-        float shieldImprv = (float) ( 1.0f + (newDesign.shieldLevel() - currDesign.shieldLevel())/10.0f );
-        float hitChanceImprv = (float) ( 1.0f + (newDesign.attackLevel() - currDesign.attackLevel())/10.0f );
+        float shieldImprv = 1.0f + (newDesign.shieldLevel() - currDesign.shieldLevel())/10.0f;
+        float hitChanceImprv = 1.0f + (newDesign.attackLevel() - currDesign.attackLevel())/10.0f;
         float armorImprv = (float) Math.sqrt(newDesign.hits() / currDesign.hits());
         
         // modnar: factor in cost with firepower
@@ -305,8 +305,8 @@ public class AIShipDesigner implements Base, ShipDesigner {
         // one level increase in shield or attack level == 1.1x
         // one level increase in armor == ~1.22x to ~1.07x
         float engineImprv = (float) Math.sqrt( (newDesign.warpSpeed() + 1) / (currDesign.warpSpeed() + 1) );
-        float shieldImprv = (float) ( 1.0f + (newDesign.shieldLevel() - currDesign.shieldLevel())/10.0f );
-        float hitChanceImprv = (float) ( 1.0f + (newDesign.attackLevel() - currDesign.attackLevel())/10.0f );
+        float shieldImprv = ( 1.0f + (newDesign.shieldLevel() - currDesign.shieldLevel())/10.0f );
+        float hitChanceImprv = ( 1.0f + (newDesign.attackLevel() - currDesign.attackLevel())/10.0f );
         float armorImprv = (float) Math.sqrt(newDesign.hits() / currDesign.hits());
         
         // modnar: use firepowerAntiShip, factor in cost
@@ -409,8 +409,8 @@ public class AIShipDesigner implements Base, ShipDesigner {
         // one level increase in shield or attack level == 1.1x
         // one level increase in armor == ~1.22x to ~1.07x
         float engineImprv = (float) Math.sqrt( (newDesign.warpSpeed() + 1) / (currDesign.warpSpeed() + 1) );
-        float shieldImprv = (float) ( 1.0f + (newDesign.shieldLevel() - currDesign.shieldLevel())/10.0f );
-        float hitChanceImprv = (float) ( 1.0f + (newDesign.attackLevel() - currDesign.attackLevel())/10.0f );
+        float shieldImprv = ( 1.0f + (newDesign.shieldLevel() - currDesign.shieldLevel())/10.0f );
+        float hitChanceImprv = ( 1.0f + (newDesign.attackLevel() - currDesign.attackLevel())/10.0f );
         float armorImprv = (float) Math.sqrt(newDesign.hits() / currDesign.hits());
         
         // modnar: use firepowerAntiShip, factor in cost

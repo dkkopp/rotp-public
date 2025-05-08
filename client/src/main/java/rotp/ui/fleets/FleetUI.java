@@ -92,25 +92,25 @@ public final class FleetUI extends BasePanel implements IMapHandler, ActionListe
 
     public HashMap<ShipDesign, BufferedImage> designImageCache = new HashMap<>();
     private GalaxyMapPanel map;
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
 
-    private final List<Sprite> controls = new ArrayList<>();
+    transient private final List<Sprite> controls = new ArrayList<>();
 
     // resources shared by SystemQueryAction panels
-    public List<StarSystem> selectedSystems = new ArrayList<>();
-    public List<StarSystem> filteredSystems = new ArrayList<>();
-    public SystemResourcesFilter resourceFilter = new SystemResourcesFilter();
-    public SystemRallyPointFilter rallyPointFilter = new SystemRallyPointFilter();
-    public SystemTransportsFilter transportsFilter = new SystemTransportsFilter();
-    public SystemStargateFilter stargateFilter = new SystemStargateFilter();
-    public ShipDesignFilter[] systemDesignFilters = new ShipDesignFilter[ShipDesignLab.MAX_DESIGNS];
+    transient public List<StarSystem> selectedSystems = new ArrayList<>();
+    transient public List<StarSystem> filteredSystems = new ArrayList<>();
+    transient public SystemResourcesFilter resourceFilter = new SystemResourcesFilter();
+    transient public SystemRallyPointFilter rallyPointFilter = new SystemRallyPointFilter();
+    transient public SystemTransportsFilter transportsFilter = new SystemTransportsFilter();
+    transient public SystemStargateFilter stargateFilter = new SystemStargateFilter();
+    transient public ShipDesignFilter[] systemDesignFilters = new ShipDesignFilter[ShipDesignLab.MAX_DESIGNS];
     public Design currDesign;
 
     // resources shared by FleetQueryAction panels
-    public List<ShipFleet> selectedFleets = new ArrayList<>();
-    public List<ShipFleet> filteredFleets = new ArrayList<>();
-    public FleetHasOrdersFilter inTransitFilter = new FleetHasOrdersFilter();
-    public ShipDesignFilter[] fleetDesignFilters = new ShipDesignFilter[ShipDesignLab.MAX_DESIGNS];
+    transient public List<ShipFleet> selectedFleets = new ArrayList<>();
+    transient public List<ShipFleet> filteredFleets = new ArrayList<>();
+    transient public FleetHasOrdersFilter inTransitFilter = new FleetHasOrdersFilter();
+    transient public ShipDesignFilter[] fleetDesignFilters = new ShipDesignFilter[ShipDesignLab.MAX_DESIGNS];
 
     // public for all
     public StarSystem hoverSystem;
@@ -131,10 +131,10 @@ public final class FleetUI extends BasePanel implements IMapHandler, ActionListe
     JLayeredPane layers = new JLayeredPane();
 
     public int SIDE_PANE_W;
-    private LinearGradientPaint grayBackC;
-    private LinearGradientPaint redBackC;
-    private LinearGradientPaint greenBackC;
-    private LinearGradientPaint brownBackC;
+    transient private LinearGradientPaint grayBackC;
+    transient private LinearGradientPaint redBackC;
+    transient private LinearGradientPaint greenBackC;
+    transient private LinearGradientPaint brownBackC;
 
     public FleetUI() {
         instance = this;
@@ -986,6 +986,7 @@ public final class FleetUI extends BasePanel implements IMapHandler, ActionListe
                     RotPUI.instance().selectMainPanel(false);
                     return;
                 }
+                return;
             case KeyEvent.VK_EQUALS:
                 if (e.isShiftDown())  {
                     softClick();

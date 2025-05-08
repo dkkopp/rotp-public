@@ -65,7 +65,7 @@ public class DiplomaticEmbassy implements Base, Serializable {
     public static final int MAX_REQUESTS_TURN = 4;
 
     private final EmpireView view;
-    private final Map<String, DiplomaticIncident> incidents = new HashMap<>();
+    private transient final Map<String, DiplomaticIncident> incidents = new HashMap<>();
     private HashMap<String, List<String>> offeredTechs = new HashMap<>();
     private transient List<DiplomaticIncident> newIncidents = new ArrayList<>();
 

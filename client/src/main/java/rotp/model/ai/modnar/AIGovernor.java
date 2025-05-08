@@ -83,7 +83,7 @@ public class AIGovernor implements Base, Governor {
         if ((bases > 0) && col.defense().missileBasesCompletedThisTurn())
             session().addSystemToAllocate(sys, text("MAIN_ALLOCATE_BASES_COMPLETE", name, col.defense().maxBases()));
         if (col.industry().isCompletedThisTurn())
-            session().addSystemToAllocate(sys, text("MAIN_ALLOCATE_MAX_FACTORIES", name, (int)col.industry().maxBuildableFactories()));
+            session().addSystemToAllocate(sys, text("MAIN_ALLOCATE_MAX_FACTORIES", name, col.industry().maxBuildableFactories()));
         if (!cleanupOK) {
             // ignore cleanup messages for governed colonies
             if (!col.isGovernor()) {

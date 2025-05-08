@@ -48,8 +48,8 @@ public class GalacticCouncil implements Base, Serializable {
     private int currentStatus = INACTIVE;
     private int actionCountdown = 1;
     private Empire leader;
-    private final List<Empire> rebels = new ArrayList<>();
-    private final List<Empire> allies = new ArrayList<>();
+    private transient final List<Empire> rebels = new ArrayList<>();
+    private transient final List<Empire> allies = new ArrayList<>();
 
     //convention variables - reset when convention starts
     private transient List<Empire> voters, empires;

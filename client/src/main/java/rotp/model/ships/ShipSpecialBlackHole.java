@@ -18,42 +18,73 @@ package rotp.model.ships;
 import rotp.model.combat.CombatStack;
 import rotp.model.tech.TechBlackHole;
 
-public final class ShipSpecialBlackHole extends ShipSpecial {
-    private static final long serialVersionUID = 1L;
-    public ShipSpecialBlackHole(TechBlackHole t) {
-        tech(t);
-        sequence(t.level + .05f);
-    }
-    @Override
-    public boolean isWeapon()         { return true; }
-    @Override
-    public TechBlackHole tech()       { return (TechBlackHole) super.tech(); }
-    @Override
-    public int range()                { return tech().range; }
-    @Override
-    public boolean canAttackPlanets() { return true; }
-    @Override
-    public boolean canAttackShips()   { return true; }
-    @Override
-    public boolean createsBlackHole()  { return true; }
-    @Override
-    public float estimatedKills(CombatStack source, CombatStack target, int num) {
-        //base pct is random from 25 to 100
-        float pct = .625f;
-        //-2% per shield level
-        pct -= (target.shieldLevel() / 50);
-        // - effect of inertial specials
-        pct -= target.blackHoleDef();
-        pct = max(0,pct);
-        return target.num * pct;
-    }
-    @Override
-    public void fireUpon(CombatStack source, CombatStack target, int count) {
-        float pct = (random()*.75f) + .25f;
-        // modnar: bug fix for Black Hole damage numbers
-        float pctLoss = (float)Math.max(0.0f, pct - (target.shieldLevel() / 50) - target.blackHoleDef());
-        float dmg = Math.round(pctLoss*target.num)*target.maxHits;
-        tech().drawSpecialAttack(source, target, count, dmg);
-        target.takeBlackHoleDamage(pct);
-    }
- }
+public final class ShipSpecialBlackHole extends ShipSpecial
+{
+  private static final long serialVersionUID = 1L;
+
+  public ShipSpecialBlackHole(TechBlackHole t)
+  {
+    tech(t);
+    sequence(t.level + .05f);
+  }
+
+  @Override
+  public boolean isWeapon()
+  {
+    return true;
+  }
+
+  @Override
+  public TechBlackHole tech()
+  {
+    return (TechBlackHole) super.tech();
+  }
+
+  @Override
+  public int range()
+  {
+    return tech().range;
+  }
+
+  @Override
+  public boolean canAttackPlanets()
+  {
+    return true;
+  }
+
+  @Override
+  public boolean canAttackShips()
+  {
+    return true;
+  }
+
+  @Override
+  public boolean createsBlackHole()
+  {
+    return true;
+  }
+
+  @Override
+  public float estimatedKills(CombatStack source, CombatStack target, int num)
+  {
+    //base pct is random from 25 to 100
+    float pct = .625f;
+    //-2% per shield level
+    pct -= (target.shieldLevel() / 50);
+    // - effect of inertial specials
+    pct -= target.blackHoleDef();
+    pct = max(0, pct);
+    return target.num * pct;
+  }
+
+  @Override
+  public void fireUpon(CombatStack source, CombatStack target, int count)
+  {
+    float pct = (random() * .75f) + .25f;
+    // modnar: bug fix for Black Hole damage numbers
+    float pctLoss =  Math.max(0.0f, pct - (target.shieldLevel() / 50) - target.blackHoleDef());
+    float dmg = Math.round(pctLoss * target.num) * target.maxHits;
+    tech().drawSpecialAttack(source, target, count, dmg);
+    target.takeBlackHoleDamage(pct);
+  }
+}

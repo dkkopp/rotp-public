@@ -65,12 +65,12 @@ public final class LoadGameUI  extends BasePanel implements MouseListener, Mouse
     static LoadGameUI current;
 
     LoadListingPanel listingPanel;
-    List<String> saveFiles = new ArrayList<>();
-    List<Long> saveSizes = new ArrayList<>();
-    List<String> saveDates = new ArrayList<>();
+    transient List<String> saveFiles = new ArrayList<>();
+    transient List<Long> saveSizes = new ArrayList<>();
+    transient List<String> saveDates = new ArrayList<>();
     String selectedFile = "";
-    Shape hoverBox;
-    Shape selectBox;
+    transient Shape hoverBox;
+    transient Shape selectBox;
     int selectIndex;
     int start = 0;
     int end = 0;
@@ -89,10 +89,10 @@ public final class LoadGameUI  extends BasePanel implements MouseListener, Mouse
     private final Rectangle fileNameBox = new Rectangle();
     private final Rectangle fileSizeBox = new Rectangle();
     private final Rectangle fileDateBox = new Rectangle();
-    private final RoundRectangle2D saveDirBox = new RoundRectangle2D.Float();
-    private final RoundRectangle2D backupDirBox = new RoundRectangle2D.Float();
-    private LinearGradientPaint[] loadBackC;
-    private LinearGradientPaint[] cancelBackC;
+    transient private final RoundRectangle2D saveDirBox = new RoundRectangle2D.Float();
+    transient private final RoundRectangle2D backupDirBox = new RoundRectangle2D.Float();
+    transient private LinearGradientPaint[] loadBackC;
+    transient private LinearGradientPaint[] cancelBackC;
 
     public LoadGameUI() {
         current = this;

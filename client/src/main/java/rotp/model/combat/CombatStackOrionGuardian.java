@@ -231,7 +231,7 @@ public class CombatStackOrionGuardian extends CombatStack {
         if ((roundsRemaining[index] > 0)) {
             selectedWeapon = weapons.get(index);
             // some weapons (beams) can fire multiple per round
-            int shots = (int) selectedWeapon.attacksPerRound();
+            int shots = selectedWeapon.attacksPerRound();
             int count = num*shots*weaponCount[index];
             if (selectedWeapon.isMissileWeapon()) {
                 CombatStackMissile missile = new CombatStackMissile(this, (ShipWeaponMissileType) selectedWeapon, count);
@@ -265,9 +265,9 @@ public class CombatStackOrionGuardian extends CombatStack {
         
         brighten = 1.0f;
         for (int i=0;i<2;i++) {
-            scale += 1.5;
-            transparency -= 0.45;
-            brighten -= .005;
+            scale += 1.5f;
+            transparency -= 0.45f;
+            brighten -= .005f;
             long t0 = System.currentTimeMillis();
             mgr.ui.paintAllImmediately();
             long t1 = System.currentTimeMillis() - t0;
@@ -275,8 +275,8 @@ public class CombatStackOrionGuardian extends CombatStack {
                 sleep(50-t1);
         }
         for (int i=0;i<12;i++) {
-            scale -= 0.25;
-            transparency += 0.075;
+            scale -= 0.25f;
+            transparency += 0.075f;
             brighten -= 0.075f;
             long t0 = System.currentTimeMillis();
             mgr.ui.paintAllImmediately();

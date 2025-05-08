@@ -98,7 +98,7 @@ public final class GameSession implements Base, Serializable
   private static final List<GameAlert> alerts = new ArrayList<>();
   private static int viewedAlerts;
 
-  private IGameOptions options;
+  private transient IGameOptions options;
   private Galaxy galaxy;
   private final GameStatus status = new GameStatus();
   private long id;

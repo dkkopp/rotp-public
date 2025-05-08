@@ -26,7 +26,7 @@ public class TechnologyAidIncident extends DiplomaticIncident {
     public final int empMe;
     public final int empYou;
     private final String techId;
-    private List<String> techIds = new ArrayList<>();
+    private transient List<String> techIds = new ArrayList<>();
     public static TechnologyAidIncident create(Empire emp, Empire donor, String techId) {
         DiplomaticEmbassy emb = emp.viewForEmpire(donor).embassy();
         TechnologyAidIncident inc = new TechnologyAidIncident(emp, donor, techId);
@@ -70,7 +70,7 @@ public class TechnologyAidIncident extends DiplomaticIncident {
         int rpValue = 0;
         for (String id: techIds) {
             Tech tech = tech(id);
-            rpValue += emp.ai().scientist().researchBCValue(tech);
+            rpValue += (int) emp.ai().scientist().researchBCValue(tech);
         }
         float pct = rpValue / emp.totalPlanetaryProduction();
         severity = min(15,25*pct); 

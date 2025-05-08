@@ -814,7 +814,7 @@ public class NewShipTemplate implements Base {
                 wpnDamage /= wpn.turnsToFire();
                 // +15% damage for each weapon computer level
                 // this estimates increased dmg from +hit
-                wpnDamage *= (1+ (.15*wpn.computerLevel()));
+                wpnDamage *= (1 + (.15f * wpn.computerLevel()));
             }
             totalDamage += wpnDamage;
         }
@@ -831,7 +831,7 @@ public class NewShipTemplate implements Base {
                 wpnDamage = d.wpnCount(i) * wpn.firepower(target.shieldLevel);
                 // +15% damage for each weapon computer level
                 // this estimates increased dmg from +hit
-                wpnDamage *= (1+ (.15*wpn.computerLevel()));
+                wpnDamage *= (1 + (.15f * wpn.computerLevel()));
             }
             totalDamage += wpnDamage;
         }

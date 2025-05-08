@@ -62,7 +62,7 @@ public abstract class ButtonPanel extends BasePanel implements MouseListener {
             grButtonDepressedBorder =   new ThickBevelBorder(4, 1, grButtonDarker, grButtonDark, grButtonLighter, grButtonLight, grButtonLight, grButtonLighter, grButtonDark, grButtonDarker);
         return grButtonDepressedBorder;
     }
-    protected Shape boundingShape;
+    protected transient Shape boundingShape;
     protected boolean hovering = false;
     protected boolean depressed = false;
     @Override

@@ -25,7 +25,7 @@ import rotp.model.incidents.KillGuardianIncident;
 
 public class OrionGuardianShip extends SpaceMonster {
     private static final long serialVersionUID = 1L;
-    private final List<String> techs = new ArrayList<>();
+    private transient final List<String> techs = new ArrayList<>();
     public OrionGuardianShip() {
         super("ORION_GUARDIAN");
         techs.add("ShipWeapon:16");  // death ray

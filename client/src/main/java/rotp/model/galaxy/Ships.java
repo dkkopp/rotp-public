@@ -27,7 +27,7 @@ import rotp.util.Base;
 
 public class Ships implements Base, Serializable {
     private static final long serialVersionUID = 1L;
-    private final List<ShipFleet> allFleets = new ArrayList<>();
+    private transient final List<ShipFleet> allFleets = new ArrayList<>();
      private List<ShipFleet> allFleetsCopy() { return new ArrayList<>(allFleets); }
     
     public void rallyOrbitingShips(int empId, int sysId, int designId, int count, int rallySysId) {

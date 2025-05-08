@@ -73,14 +73,12 @@ public class StarSystem implements Base, Sprite, IMappedObject, Serializable
   private boolean abandoned = false;
   private boolean piracy = false;
   private boolean inNebula = false;
-  @SuppressWarnings("serial")
-  private final List<Transport> orbitingTransports = new ArrayList<>();
+  private transient final List<Transport> orbitingTransports = new ArrayList<>();
   private int[] nearbySystems;
   private String notes;
   private String eventKey;
   private SpaceMonster monster;
-  @SuppressWarnings("serial")
-  private final List<StarSystemEvent> events = new ArrayList<>();
+  private transient final List<StarSystemEvent> events = new ArrayList<>();
 
   public int transportDestId;
   public int transportAmt;

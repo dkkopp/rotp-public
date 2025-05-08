@@ -33,7 +33,7 @@ public class FleetPlan implements Base, Serializable {
     public int empireId;
     public int stagingPointId = StarSystem.NULL_ID;
     public boolean goToStagingPoint = false;
-    public List<ShipPlan> shipPlans = new ArrayList<>();
+    public transient List<ShipPlan> shipPlans = new ArrayList<>();
     private final int[] needed = new int[ShipDesignLab.MAX_DESIGNS];
     public float priority;
     public boolean inSynch = false;

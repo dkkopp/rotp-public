@@ -149,7 +149,7 @@ public class AIGeneral implements Base, General {
             bestCol.shipyard().design(design);
             bestCol.shipyard().addQueuedBC(design.cost());
             float colonyProduction = (bestCol.totalIncome() - bestCol.minimumCleanupCost()) * bestCol.planet().productionAdj();
-            int desiredCount = min(additionalColonizersToBuild, (int)Math.floor((float)colonyProduction / (float)design.cost()));
+            int desiredCount = min(additionalColonizersToBuild, (int)Math.floor(colonyProduction / (float) design.cost()));
             desiredCount = max(1, desiredCount);
             bestCol.shipyard().addDesiredShips(desiredCount);
             //System.out.println(galaxy().currentTurn()+" "+empire.name()+" should order "+desiredCount+" colonizers at "+bestCol.name());
@@ -192,9 +192,9 @@ public class AIGeneral implements Base, General {
         // Lower desire value for Poor, Ultra-Poor
         // modnar: increase values for poor/ultra-poor
         if (empire.sv.isUltraPoor(sysId))
-            val *= 0.6;
+            val *= 0.6f;
         else if (empire.sv.isPoor(sysId))
-            val *= 0.75;
+            val *= 0.75f;
         else if (empire.sv.isResourceNormal(sysId))
             val *= 1;
         else if (empire.sv.isRich(sysId))
@@ -250,8 +250,8 @@ public class AIGeneral implements Base, General {
             pr *= 2;
         else if (empire.sv.isOrionArtifact(sysId))
             pr *= 3;
-        pr /= Math.sqrt(max(1,empire.sv.distance(sysId)));
-        pr /= Math.sqrt(max(1,empire.sv.bases(sysId)));
+        pr /= (float) Math.sqrt(max(1,empire.sv.distance(sysId)));
+        pr /= (float) Math.sqrt(max(1,empire.sv.bases(sysId)));
         return pr/10;
     }
     public void reviseFleetPlan(StarSystem sys) {
@@ -581,7 +581,7 @@ public class AIGeneral implements Base, General {
         
         // modnar: change sneak attack chance by number of our wars vs. number of their wars
         // try not to get into too many wars, and pile on if target is in many wars
-        float enemyMod = (float) (0.2f * (v.empire().numEnemies() - empire.numEnemies()));
+        float enemyMod = (0.2f * (v.empire().numEnemies() - empire.numEnemies()));
         baseChance += enemyMod;
 
         float value = (empire.sv.factories(sys.id) * 10);
@@ -859,7 +859,7 @@ public class AIGeneral implements Base, General {
         {
             for(ShipFleet fl : empire.allFleets())
             {
-                totalKillingPower += fl.expectedBombardDamage(dummySys) / 200.0;
+                totalKillingPower += fl.expectedBombardDamage(dummySys) / 200.0f;
             }
         }
         float overKill = 0.0f;

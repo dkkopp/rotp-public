@@ -103,9 +103,9 @@ public class AIGeneral implements Base, General {
         // Lower desire value for Poor, Ultra-Poor
         // modnar: increase values for poor/ultra-poor
         if (empire.sv.isUltraPoor(sysId))
-            val *= 0.6;
+            val *= 0.6f;
         else if (empire.sv.isPoor(sysId))
-            val *= 0.75;
+            val *= 0.75f;
         else if (empire.sv.isResourceNormal(sysId))
             val *= 1;
         else if (empire.sv.isRich(sysId))
@@ -161,8 +161,8 @@ public class AIGeneral implements Base, General {
             pr *= 2;
         else if (empire.sv.isOrionArtifact(sysId))
             pr *= 3;
-        pr /= Math.sqrt(max(1,empire.sv.distance(sysId)));
-        pr /= Math.sqrt(max(1,empire.sv.bases(sysId)));
+        pr /= (float) Math.sqrt(max(1,empire.sv.distance(sysId)));
+        pr /= (float) Math.sqrt(max(1,empire.sv.bases(sysId)));
         return pr/10;
     }
     public void reviseFleetPlan(StarSystem sys) {
@@ -528,7 +528,7 @@ public class AIGeneral implements Base, General {
         
         // modnar: change sneak attack chance by number of our wars vs. number of their wars
         // try not to get into too many wars, and pile on if target is in many wars
-        float enemyMod = (float) (0.2f * (v.empire().numEnemies() - empire.numEnemies()));
+        float enemyMod = 0.2f * (v.empire().numEnemies() - empire.numEnemies());
         baseChance += enemyMod;
 
         float value = (empire.sv.factories(sys.id) * 10);

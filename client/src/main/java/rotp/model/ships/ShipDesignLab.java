@@ -32,17 +32,17 @@ public class ShipDesignLab implements Base, Serializable {
     private final ShipDesign[] designs = new ShipDesign[ShipDesignLab.MAX_DESIGNS];
     private final DesignStargate stargateDesign = new DesignStargate();
 
-    private final List<ShipView> designHistory = new ArrayList<>();
+    private final transient List<ShipView> designHistory = new ArrayList<>();
     private int shipStyleIndex;
 
-    private final List<ShipComputer> computer = new ArrayList<>();
-    private final List<ShipShield> shield = new ArrayList<>();
-    private final List<ShipECM> ecm = new ArrayList<>();
-    private final List<ShipArmor> armor = new ArrayList<>();
-    private final List<ShipEngine> engine = new ArrayList<>();
-    private final List<ShipManeuver> maneuver = new ArrayList<>();
-    private final List<ShipWeapon> weapon = new ArrayList<>();
-    private final List<ShipSpecial> special = new ArrayList<>();
+    private final transient List<ShipComputer> computer = new ArrayList<>();
+    private final transient List<ShipShield> shield = new ArrayList<>();
+    private final transient List<ShipECM> ecm = new ArrayList<>();
+    private final transient List<ShipArmor> armor = new ArrayList<>();
+    private final transient List<ShipEngine> engine = new ArrayList<>();
+    private final transient List<ShipManeuver> maneuver = new ArrayList<>();
+    private final transient List<ShipWeapon> weapon = new ArrayList<>();
+    private final transient List<ShipSpecial> special = new ArrayList<>();
 
     private int scoutDesignId, bomberDesignId, fighterDesignId, colonyDesignId, destroyerDesignId;
 

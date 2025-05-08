@@ -27,8 +27,8 @@ public class RandomEvents implements Base, Serializable {
     private static final float CHANCE_INCR = 0.01f;
     private static final float MAX_CHANCE_INCR = 0.05f;
     public static final int START_TURN = 50;
-    private List<RandomEvent> events;
-    private List<RandomEvent> activeEvents;
+    private transient List<RandomEvent> events;
+    private transient List<RandomEvent> activeEvents;
     private float eventChance = START_CHANCE;
 
     public RandomEvents() {

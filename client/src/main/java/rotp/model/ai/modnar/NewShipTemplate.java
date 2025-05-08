@@ -129,7 +129,7 @@ public class NewShipTemplate implements Base {
             costMultiplier[1] *= 0.95f;
             costMultiplier[2] *= 1.00f;
             costMultiplier[3] *= 1.05f;
-            costMultiplier[4] = (float) (costMultiplier[4] * (1.0f + 0.05f*(currentDesign.size() - 2)));
+            costMultiplier[4] = (costMultiplier[4] * (1.0f + 0.05f*(currentDesign.size() - 2)));
         }
         
         // how many ships of each design can we build for virtual tests?
@@ -151,7 +151,7 @@ public class NewShipTemplate implements Base {
             
             // number of whole designs we can build within our budget
             // modnar: change to float, in order to consider fractional damage/BC
-            float count = (float) (shipBudgetBC / (design.cost() * costMultiplier[i]));
+            float count = (shipBudgetBC / (design.cost() * costMultiplier[i]));
             // modnar: do not consider designs which cannot be build with shipBudgetBC
             if (count < 1.0f)
                 count = 0.0f;
@@ -190,7 +190,7 @@ public class NewShipTemplate implements Base {
         // fine for moduleSpaceRatio to be low, will get weapon leftover with second "loop" below
         // moduleSpaceRatio += (size - 3)/18
         float moduleSpaceRatio = race.shipDesignMods[MODULE_SPACE];
-        moduleSpaceRatio = (float) ( moduleSpaceRatio + (size - 3.0f)/18.0f );
+        moduleSpaceRatio = ( moduleSpaceRatio + (size - 3.0f)/18.0f );
         float modulesSpace = totalSpace * moduleSpaceRatio;
 
         // arbitrary initial weighting of what isn't weapons
@@ -962,7 +962,7 @@ public class NewShipTemplate implements Base {
                 wpnDamage /= wpn.turnsToFire();
                 // +15% damage for each weapon computer level
                 // this estimates increased dmg from +hit
-                wpnDamage *= (1+ (.15*wpn.computerLevel()));
+                wpnDamage *= (1+ (.15f * wpn.computerLevel()));
             }
             totalDamage += wpnDamage;
         }
@@ -979,7 +979,7 @@ public class NewShipTemplate implements Base {
                 wpnDamage = d.wpnCount(i) * wpn.firepower(target.shieldLevel);
                 // +15% damage for each weapon computer level
                 // this estimates increased dmg from +hit
-                wpnDamage *= (1+ (.15*wpn.computerLevel()));
+                wpnDamage *= (1+ (.15f * wpn.computerLevel()));
             }
             totalDamage += wpnDamage;
         }

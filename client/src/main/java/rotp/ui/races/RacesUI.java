@@ -67,7 +67,7 @@ public class RacesUI extends BasePanel {
     Rectangle militaryBox = new Rectangle();
     Rectangle statusBox = new Rectangle();
 
-    private final List<Empire> empires = new ArrayList<>();
+    transient private final List<Empire> empires = new ArrayList<>();
 
     BasePanel cardPanel;
     MainTitlePanel titlePanel;
@@ -80,7 +80,7 @@ public class RacesUI extends BasePanel {
     private final CardLayout cardLayout = new CardLayout();
     private int pad = 10;
     private int helpFrame = 0;
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
     private final HashMap<Empire, Shape> colorIcons = new HashMap<>();
 
     public RacesUI() {
@@ -666,7 +666,7 @@ public class RacesUI extends BasePanel {
         }
         Rectangle hoverBox;
         Rectangle helpBox = new Rectangle();
-        Area textureArea;
+        transient Area textureArea;
 
         private void initModel() {
             setOpaque(false);
@@ -880,7 +880,7 @@ public class RacesUI extends BasePanel {
         int contactH, listH;
         Rectangle contactsListBox = new Rectangle();
         Rectangle contactsScroller = new Rectangle();
-        Shape hoverShape;
+        transient Shape hoverShape;
 
         public RacePlayerRelationsPane() {
             setBackground(lightBrown);
