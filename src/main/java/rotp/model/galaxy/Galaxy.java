@@ -49,10 +49,14 @@ public class Galaxy implements Base, Serializable
   private final RandomEvents events = new RandomEvents();
   public final Ships ships = new Ships();
   private final StarSystem[] starSystems;
+  @SuppressWarnings("serial")
   private List<Nebula> nebulas;
   private final Empire[] empires;
+  @SuppressWarnings("serial")
   private final List<String> adviceGiven = new ArrayList<>();
+  @SuppressWarnings("serial")
   private final List<Transport> transports = new ArrayList<>();
+  @SuppressWarnings("serial")
   private final List<StarSystem> abandonedSystems = new ArrayList<>();
 
   private Empire playerEmpire;
@@ -710,7 +714,7 @@ public class Galaxy implements Base, Serializable
         Colony col = system.planet().colony();
         if ((col.empire() == sys.empire()) && col.transporting() && (col.transport().destSysId() == sys.id))
         {
-          pop += col.inTransport();
+          pop += (int) col.inTransport();
         }
       }
     }
@@ -736,7 +740,7 @@ public class Galaxy implements Base, Serializable
         Colony col = system.planet().colony();
         if ((col.empire() != sys.empire()) && col.transporting() && (col.transport().destSysId() == sys.id))
         {
-          pop += col.inTransport();
+          pop += (int) col.inTransport();
         }
       }
     }
@@ -761,7 +765,7 @@ public class Galaxy implements Base, Serializable
       {
         if (col.transporting() && (col.transport().destSysId() == sys.id))
         {
-          pop += col.inTransport();
+          pop += (int) col.inTransport();
         }
       }
     }

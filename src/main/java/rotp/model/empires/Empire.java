@@ -555,9 +555,9 @@ public final class Empire implements Base, NamedObject, Serializable {
         if (!canSendTransportsTo(sys))
             return 0;
         else if (sys.empire() == this)
-            return (int)(sv.currentSize(sys.id) - (int) sv.population(sys.id))+sys.transportSprite().amt();
+            return (sv.currentSize(sys.id) - sv.population(sys.id))+sys.transportSprite().amt();
         else
-            return (int) sv.currentSize(sys.id);
+            return sv.currentSize(sys.id);
     }
     public void changeAllExistingRallies(StarSystem dest) {
         if (canRallyFleetsTo(id(dest))) {

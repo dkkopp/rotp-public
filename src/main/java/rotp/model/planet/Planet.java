@@ -340,7 +340,7 @@ public class Planet implements Base, IMappedObject, Serializable {
         }
     }
     public void terraformBiosphere(float amt) {
-        terraformLevel += amt;
+        terraformLevel += (int) amt;
     }
     public Empire empire() { return colony == null ? null : colony.empire(); }
     public boolean canTerraformAtmosphere(Empire civ) {

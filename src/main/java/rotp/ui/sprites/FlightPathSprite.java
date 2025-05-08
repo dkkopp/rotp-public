@@ -61,6 +61,7 @@ public class FlightPathSprite extends MapSprite {
         paths.add(s);
     }
     public static List<FlightPathSprite> workingPaths() {
+        @SuppressWarnings("unchecked")
         List<FlightPathSprite> paths = (List<FlightPathSprite>) GameSession.instance().var("WORKING_PATHS");
         if (paths == null) {
             paths = new ArrayList<>();

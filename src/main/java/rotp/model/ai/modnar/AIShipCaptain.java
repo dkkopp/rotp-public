@@ -456,7 +456,7 @@ public class AIShipCaptain implements Base, ShipCaptain {
     public static FlightPath allValidPaths(int x0, int y0, int x1, int y1, int moves, CombatStack stack, List<FlightPath> validPaths, FlightPath bestPath) {
         FlightPath updatedBestPath = bestPath;
         ShipCombatManager mgr = stack.mgr;
-        int gridW = ShipCombatManager.maxX+3;
+        int gridW = ShipCombatManager.MAX_X+3;
 
         // all squares containing ships, asteroids, etc or non-traversable
         // can also check for enemy repulsor beam effects

@@ -17,40 +17,89 @@ package rotp.model.ships;
 
 import rotp.model.tech.TechEngineWarp;
 
-public final class ShipManeuver extends ShipComponent {
-    private static final long serialVersionUID = 1L;
-    public ShipManeuver() {
-        sequence(0);
+public final class ShipManeuver extends ShipComponent
+{
+  private static final long serialVersionUID = 1L;
+
+  public ShipManeuver()
+  {
+    sequence(0);
+  }
+
+  public ShipManeuver(TechEngineWarp t)
+  {
+    tech(t);
+    sequence(t.level);
+  }
+
+  @Override
+  public TechEngineWarp tech()
+  {
+    return (TechEngineWarp) super.tech();
+  }
+
+  @Override
+  public String name()
+  {
+    return tech().item2();
+  }
+
+  public int level()
+  {
+    return tech().baseWarp();
+  }
+
+  @Override
+  public float power(ShipDesign d)
+  {
+    return tech().baseManeuverPower(d.size(), d.engine().baseWarp());
+  }
+
+  @Override
+  public String desc()
+  {
+    return tech().brief2();
+  }
+
+  @Override
+  public String desc(ShipDesign d)
+  {
+    return text(desc(), d.combatSpeed());
+  }
+
+  @Override
+  public float size(ShipDesign d)
+  {
+    return 0;
+  }
+
+  @Override
+  public float cost(ShipDesign d)
+  {
+    return (enginesRequired(d) * d.engine().cost(d));
+  }
+
+  public int combatSpeed()
+  {
+    return tech() == null ? 0 : ((tech().baseWarp() + 2) / 2);
+  }
+
+  @Override
+  public String fieldValue(int n, ShipDesign d, int bank)
+  {
+    switch (n)
+    {
+      case 0:
+        return name().isEmpty() ? text("SHIP_DESIGN_COMPONENT_NONE") : name();
+      case 1:
+        return str(combatSpeed());
+      case 2:
+        return str((int) (cost(d) + (enginesRequired(d) * d.engine().cost(d))));
+      case 3:
+        return str((int) power(d));
+      case 4:
+        return str((int) space(d));
     }
-    public ShipManeuver(TechEngineWarp t) {
-        tech(t);
-        sequence(t.level);
-    }
-    @Override
-    public TechEngineWarp tech()      { return (TechEngineWarp) super.tech(); }
-    @Override
-    public String name()              { return tech().item2(); }
-    public int level()                { return tech().baseWarp(); }
-    @Override
-    public float power(ShipDesign d) { return tech().baseManeuverPower(d.size(), d.engine().baseWarp()); }
-    @Override
-    public String desc()             { return tech().brief2(); }
-    @Override
-    public String desc(ShipDesign d) { return text(desc(), (int) d.combatSpeed()); }
-    @Override
-    public float size(ShipDesign d)  { return 0; }
-    @Override
-    public float cost(ShipDesign d)  { return (enginesRequired(d) * d.engine().cost(d)); }
-    public int combatSpeed()          { return tech() == null ? 0 : (int) ((tech().baseWarp() + 2) / 2); }
-    @Override
-    public String fieldValue(int n, ShipDesign d, int bank) {
-        switch(n) {
-                    case 0: return name().isEmpty() ? text("SHIP_DESIGN_COMPONENT_NONE") : name();
-                    case 1: return str(combatSpeed());
-                    case 2: return str((int)(cost(d)+(enginesRequired(d)*d.engine().cost(d))));
-                    case 3: return str((int)power(d));
-                    case 4: return str((int)space(d));
-        }
-        return "";
-    }
+    return "";
+  }
 }

@@ -106,13 +106,13 @@ public class Leader implements Base, Serializable {
         if (isAggressive())
             ratio /= 2;
         if (isMilitarist())
-            ratio /= 1.5;
+            ratio /= 1.5f;
         if (isHonorable())
             ratio *= 2;
         if (isPacifist())
             ratio *= 2;
         if (isXenophobic())
-            ratio *= 1.5;
+            ratio *= 1.5f;
         if (isExpansionist())
             ratio /= 2;
         return ratio;

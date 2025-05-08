@@ -195,6 +195,7 @@ public final class TechCategory implements Base, Serializable {
             String id = baseCat.possibleTechs.get(i);
             Tech t = tech(id);
             if (!t.restricted && emp.canResearch(t) && !t.free ) {
+                @SuppressWarnings("unchecked")
                 List<String> techs = (List<String>) techsByQuintile[t.quintile()-1];
                 techs.add(id);
             }
@@ -202,6 +203,7 @@ public final class TechCategory implements Base, Serializable {
 
         for (int i=0;i<MAX_QUINTILES;i++) {
             boolean found = false;
+            @SuppressWarnings("unchecked")
             List<String> techs = (List<String>) techsByQuintile[i];
             for (String id: techs) {
                 if (random() <= discoveryPct()) {

@@ -303,9 +303,10 @@ public class CombatStack implements Base {
         float plannedDistance = movePointsTo(x1,y1);
 
         while (submoveTo(x1,y1))
-            ;
+        {
+        }
 
-        distance += plannedDistance;
+        distance += (int) plannedDistance;
         move -= plannedDistance;        
         return !destroyed();
     }

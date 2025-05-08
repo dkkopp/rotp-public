@@ -54,8 +54,8 @@ public class CrystalShipCaptain implements Base, ShipCaptain {
     private Point bestAttackSpot(CombatStack st) {
         ShipCombatManager mgr = st.mgr;
         
-        int maxX = ShipCombatManager.maxX;
-        int maxY = ShipCombatManager.maxY;
+        int maxX = ShipCombatManager.MAX_X;
+        int maxY = ShipCombatManager.MAX_Y;
         int validGrid[][] = new int[maxX+1][maxY+1];
         
         // add up stack hp values in all of their adjacent squares

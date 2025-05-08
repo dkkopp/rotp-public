@@ -271,7 +271,7 @@ public class ColonyIndustry extends ColonySpendingCategory {
                     newBC -= convertCost;
                     possibleNewFactories += delta;
                     builtFactories += delta;
-                    previouslyConvertedFactories += delta;
+                    previouslyConvertedFactories += (int) delta;
                 }
             }
             // second, try to build new factories at current controls
@@ -328,7 +328,7 @@ public class ColonyIndustry extends ColonySpendingCategory {
                     float delta = convertCost/factoryConversionCost();
                     totalCost += convertCost;
                     builtFactories += delta;
-                    previouslyConvertedFactories += delta;
+                    previouslyConvertedFactories += (int) delta;
                 }
             }
             // second, try to build new factories at current controls

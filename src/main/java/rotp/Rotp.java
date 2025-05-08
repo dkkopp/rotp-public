@@ -203,18 +203,6 @@ public class Rotp
 
   public static void restart()
   {
-    File exeFile = new File(startupDir + "/" + exeFileName);
-    String execStr = exeFile.exists() ? exeFileName : actualAlloc < 0 ? "java -jar " + jarFileName : "java -Xmx" + actualAlloc + "m -jar " + jarFileName + " arg1";
-
-    try
-    {
-      Runtime.getRuntime().exec(execStr);
-      System.exit(0);
-    }
-    catch (IOException ex)
-    {
-      System.err.println("Error attempting restart: ");
-      ex.printStackTrace();
-    }
+    throw new UnsupportedOperationException("DENIED!!!!");
   }
 }
