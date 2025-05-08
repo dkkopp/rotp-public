@@ -83,7 +83,48 @@
           </dependency>
         </dependencies>
       </plugin>
-    </plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.8.1</version>
+        <executions>
+          <execution>
+            <id>package-client</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>remnants-of-the-precursors</artifactId>
+                  <version>${project.version}</version>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project.build.directory}/modules</outputDirectory>
+              <outputWriteReleases>false</outputWriteReleases>
+              <outputWriteSnapshots>false</outputWriteSnapshots>
+              <outputWriteIfNewer>true</outputWriteIfNewer>
+            </configuration>
+          </execution>
+          <execution>
+            <id>package-with-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeScope>runtime</includeScope>
+              <excludeArtifactIds>annotations</excludeArtifactIds>
+              <outputDirectory>${project.build.directory}/modules</outputDirectory>
+              <outputWriteReleases>false</outputWriteReleases>
+              <outputWriteSnapshots>false</outputWriteSnapshots>
+              <outputWriteIfNewer>true</outputWriteIfNewer>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>    </plugins>
   </build>
 
 </project>

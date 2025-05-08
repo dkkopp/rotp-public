@@ -1,0 +1,7 @@
+--name "Remnants of the Precursors"
+--description "Yo, drink Pilsner!"
+--vendor "Bob"
+--license-file ../license.txt
+--module-path ../../target/modules
+--module rotp/rotp.Rotp
+--add-modules java.desktop
