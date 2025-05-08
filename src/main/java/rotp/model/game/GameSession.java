@@ -424,8 +424,6 @@ public final class GameSession implements Base, Serializable {
             }
             finally {
                 RotPUI.instance().mainUI().restoreMapState();
-                if (Rotp.memoryLow())
-                    RotPUI.instance().mainUI().showMemoryLowPrompt();
                 // handle game over possibility
                 if (!session().status().inProgress())
                     RotPUI.instance().selectGameOverPanel();
