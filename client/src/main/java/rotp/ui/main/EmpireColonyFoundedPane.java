@@ -41,11 +41,11 @@ import rotp.ui.map.IMapHandler;
 
 public class EmpireColonyFoundedPane extends BasePanel implements MouseMotionListener, MouseListener, MouseWheelListener {
     private static final long serialVersionUID = 1L;
-    SystemViewer parent;
+    transient SystemViewer parent;
     Rectangle flagBox = new Rectangle();
     Rectangle nameBox = new Rectangle();
-    Shape hoverBox;
-    IMapHandler topParent;
+    transient Shape hoverBox;
+    transient IMapHandler topParent;
     public BasePanel repainter;
     public EmpireColonyFoundedPane(SystemViewer p, IMapHandler top, Color c0) {
         parent = p;

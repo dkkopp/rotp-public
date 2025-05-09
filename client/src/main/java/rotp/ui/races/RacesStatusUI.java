@@ -51,9 +51,9 @@ public final class RacesStatusUI extends BasePanel implements MouseListener, Mou
     static Stroke dashedLineStroke;
 
     private final RacesUI parent;
-    Shape hoverShape;
+    transient Shape hoverShape;
     int dragY;
-    List<RaceValue> vals = new ArrayList<>();
+    transient List<RaceValue> vals = new ArrayList<>();
 
     int[] dataY = new int[6];
     int[] dataYMax = new int[6];
@@ -63,7 +63,7 @@ public final class RacesStatusUI extends BasePanel implements MouseListener, Mou
     Rectangle playerHistoryButton = new Rectangle();
     Rectangle aiHistoryButton = new Rectangle();;
     
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
     public RacesStatusUI(RacesUI p) {
         parent = p;
         dashedLineStroke = new BasicStroke(s2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{3}, 0);

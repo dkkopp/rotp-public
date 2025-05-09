@@ -135,6 +135,7 @@ public class MapOverlaySpies extends MapOverlay {
                     selectEmpire(empires.get(nextI));
                     break;
                 }
+                break;
             default:
                 misClick(); break;
         }

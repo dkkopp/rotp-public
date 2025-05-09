@@ -64,27 +64,27 @@ public class GroundBattleUI extends BasePanel implements MouseListener {
     private Colony colony;
     Empire defenderEmp, attackerEmp;
     private Transport transport;
-    private TechHandWeapon attackerWeapon;
-    private TechHandWeapon defenderWeapon;
+    transient private TechHandWeapon attackerWeapon;
+    transient private TechHandWeapon defenderWeapon;
     private int totalAttackers  = 0;
     private int totalDefenders = 0;
     private int landingCount;
 
-    private Image landscapeImg;
-    private LinearGradientPaint soldierBackG;
+    transient private Image landscapeImg;
+    transient private LinearGradientPaint soldierBackG;
     String subtitle;
 
-    private final List<Image> descendingFrames = new ArrayList<>();
-    private final List<Integer> descendingFrameRefs = new ArrayList<>();
-    private final List<Image> openingFrames = new ArrayList<>();
-    private final List<Integer> openingFrameRefs = new ArrayList<>();
+    transient private final List<Image> descendingFrames = new ArrayList<>();
+    transient private final List<Integer> descendingFrameRefs = new ArrayList<>();
+    transient private final List<Image> openingFrames = new ArrayList<>();
+    transient private final List<Integer> openingFrameRefs = new ArrayList<>();
 
-    List<BufferedImage> attackerFrames = new ArrayList<>();
-    List<BufferedImage> defenderFrames = new ArrayList<>();
-    List<BufferedImage> attackerDeathFrames = new ArrayList<>();
-    List<BufferedImage> defenderDeathFrames = new ArrayList<>();
-    List<Integer> remainingAttackers = new ArrayList<>();
-    List<Integer> remainingDefenders = new ArrayList<>();
+    transient List<BufferedImage> attackerFrames = new ArrayList<>();
+    transient List<BufferedImage> defenderFrames = new ArrayList<>();
+    transient List<BufferedImage> attackerDeathFrames = new ArrayList<>();
+    transient List<BufferedImage> defenderDeathFrames = new ArrayList<>();
+    transient List<Integer> remainingAttackers = new ArrayList<>();
+    transient List<Integer> remainingDefenders = new ArrayList<>();
     // which animated frame the soldiers will fire
     int attackerFiringFrame, defenderFiringFrame;
     int attackerFinalFrame, defenderFinalFrame;
@@ -100,8 +100,8 @@ public class GroundBattleUI extends BasePanel implements MouseListener {
     int attackerGunY = 0;
     int defenderGunX = 0;
     int defenderGunY = 0;
-    LandingShip[] ships = new LandingShip[MAX_SHIPS];
-    private SoundClip shipLanding;
+    transient LandingShip[] ships = new LandingShip[MAX_SHIPS];
+    transient private SoundClip shipLanding;
     String sysName;
     String title;
 

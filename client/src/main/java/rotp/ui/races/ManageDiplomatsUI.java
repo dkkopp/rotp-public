@@ -50,18 +50,18 @@ public class ManageDiplomatsUI  extends BasePanel implements MouseListener, Mous
     private static final Color unselectedC = new Color(112,85,68);
 
     final RacesUI parent;
-    private Shape hoverBox, hoverButton;
+    transient private Shape hoverBox, hoverButton;
     private int dragY = 0;
     private final Rectangle okButton = new Rectangle();
     final Rectangle listBox = new Rectangle();
     final Rectangle listScroller = new Rectangle();
     int listY, listYMax;
     int button1W, button2W, maxNameW;
-    private LinearGradientPaint smallGreenBackC, largeGreenBackC;
-    Shape textureClip;
-    List<Rectangle> audienceBoxes = new ArrayList<>();
-    List<Rectangle> diploBoxes = new ArrayList<>();
-    List<EmpireView> empireViews = new ArrayList<>();
+    transient private LinearGradientPaint smallGreenBackC, largeGreenBackC;
+    transient Shape textureClip;
+    transient List<Rectangle> audienceBoxes = new ArrayList<>();
+    transient List<Rectangle> diploBoxes = new ArrayList<>();
+    transient List<EmpireView> empireViews = new ArrayList<>();
 
     public ManageDiplomatsUI(RacesUI p) {
         parent = p;

@@ -49,7 +49,7 @@ public class TransportPanel extends BasePanel {
     protected BasePanel topPane;
     protected BasePanel detailPane;
     protected BasePanel bottomPane;
-    private Shape hoverBox;
+    transient private Shape hoverBox;
     private final Rectangle retreatBox = new Rectangle();
 
     public TransportPanel(SpriteDisplayPanel p) {
@@ -84,7 +84,7 @@ public class TransportPanel extends BasePanel {
         private static final long serialVersionUID = 1L;
         private final TransportPanel parent;
         private Race displayedRace;
-        private Image shipImg;
+        transient private Image shipImg;
         public TransportGraphicPane(TransportPanel p){
             parent = p;
             init();
@@ -301,12 +301,12 @@ public class TransportPanel extends BasePanel {
         private final TransportPanel parent;
         private final Color buttonShadowC = new Color(33,33,33);
         int leftM, midM1, midM2, rightM;
-        private LinearGradientPaint fullGrayBackC;
+        transient private LinearGradientPaint fullGrayBackC;
         private boolean initted = false;
 
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         private final Rectangle destBox = new Rectangle();
-        private Shape textureClip;
+        transient private Shape textureClip;
         public TransportButtonPane(TransportPanel p) {
             parent = p;
             init();

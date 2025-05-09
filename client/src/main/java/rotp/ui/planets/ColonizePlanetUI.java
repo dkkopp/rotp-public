@@ -77,10 +77,10 @@ public class ColonizePlanetUI extends FadeInPanel implements MouseListener, Mous
 
     private ShipFleet fleet;
 
-    private Image landscapeImg;
-    private Image shipImg;
-    private Image flagPole;
-    private BufferedImage raceImg;
+    transient private Image landscapeImg;
+    transient private Image shipImg;
+    transient private Image flagPole;
+    transient private BufferedImage raceImg;
     private boolean exited = false;
     private int landingX = 0;
     private int landingY = 0;
@@ -91,16 +91,16 @@ public class ColonizePlanetUI extends FadeInPanel implements MouseListener, Mous
     private boolean showFlag = false;
     private boolean showAstronaut = false;
     private final BaseTextField nameField;
-    private SoundClip shipLanding;
-    private SoundClip claimingJingle;
+    transient private SoundClip shipLanding;
+    transient private SoundClip claimingJingle;
     final static String CANCEL_ACTION = "cancel-input";
 
-    private final List<Image> descendingFrames = new ArrayList<>();
-    private final List<Integer> descendingFrameRefs = new ArrayList<>();
-    private final List<Image> openingFrames = new ArrayList<>();
-    private final List<Integer> openingFrameRefs = new ArrayList<>();
+    transient private final List<Image> descendingFrames = new ArrayList<>();
+    transient private final List<Integer> descendingFrameRefs = new ArrayList<>();
+    transient private final List<Image> openingFrames = new ArrayList<>();
+    transient private final List<Integer> openingFrameRefs = new ArrayList<>();
     int frameIndex = 0;
-    private LinearGradientPaint okBackground;
+    transient private LinearGradientPaint okBackground;
     int okButtonX, okButtonY, okButtonW, okButtonH;
     boolean okHovering;
     Rectangle okBox;

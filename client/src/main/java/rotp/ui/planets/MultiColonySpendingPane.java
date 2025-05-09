@@ -50,7 +50,7 @@ public class MultiColonySpendingPane extends BasePanel implements MouseListener,
     static final Color sliderTextEnabled = Color.black;
     static final Color sliderTextDisabled = new Color(65,65,65);
 
-    private LinearGradientPaint greenBackC;
+    transient private LinearGradientPaint greenBackC;
     Color borderHi, borderLo, textC, backC;
     Rectangle spending0Box = new Rectangle();
     Rectangle spending25Box = new Rectangle();
@@ -61,7 +61,7 @@ public class MultiColonySpendingPane extends BasePanel implements MouseListener,
     Rectangle hoverBox;
     public int selectedCat = 0;
 
-    private final SystemViewer parent;
+    transient private final SystemViewer parent;
     public MultiColonySpendingPane(SystemViewer p, Color c0, Color text, Color hi, Color lo) {
         parent = p;
         textC = text;
@@ -326,7 +326,7 @@ public class MultiColonySpendingPane extends BasePanel implements MouseListener,
         private final Polygon rightArrow = new Polygon();
         private final Rectangle labelBox = new Rectangle();
         private final Rectangle sliderBox = new Rectangle();
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         // polygon coordinates for left & right increment buttons
         private final int leftButtonX[] = new int[3];
         private final int leftButtonY[] = new int[3];

@@ -48,11 +48,11 @@ public final class GameOverUI extends FadeInPanel implements MouseListener, Mous
     private final Color greenEdgeC = new Color(44,59,30);
     private final Color greenMidC = new Color(70,93,48);
     private int transIndex;
-    BufferedImage backImg;
-    private LinearGradientPaint back1, back2;
+    transient BufferedImage backImg;
+    transient private LinearGradientPaint back1, back2;
     Rectangle exitBox = new Rectangle();
     Rectangle replayBox = new Rectangle();
-    Shape hoverBox;
+    transient Shape hoverBox;
     int fadeDelay = 0;
     public GameOverUI() {
         init0();

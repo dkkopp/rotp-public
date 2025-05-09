@@ -70,7 +70,7 @@ public final class RacesIntelligenceUI extends BasePanel implements MouseListene
     private final Polygon missionIncr = new Polygon();
     private final Polygon missionDecr = new Polygon();
     Rectangle buttonSlider = new Rectangle();
-    Shape hoverShape;
+    transient Shape hoverShape;
     int dragY;
     int[] ptX = new int[3];
     int[] ptY = new int[3];
@@ -88,7 +88,7 @@ public final class RacesIntelligenceUI extends BasePanel implements MouseListene
     private final HashMap<Integer, List<String>> unknownTechs = new HashMap<>();
     private final HashMap<String, List<Empire>> techOwners = new HashMap<>();
 
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
     public RacesIntelligenceUI(RacesUI p) {
         parent = p;
         manageSpiesPane = new ManageSpiesUI(p);

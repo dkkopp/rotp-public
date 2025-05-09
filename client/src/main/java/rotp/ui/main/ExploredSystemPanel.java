@@ -67,9 +67,9 @@ public class ExploredSystemPanel extends SystemPanel {
     private class ExploredDetailPane extends BasePanel implements MouseMotionListener, MouseListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
         SystemPanel parent;
-        private Shape textureClip;
+        transient private Shape textureClip;
         Rectangle flagBox = new Rectangle();
-        Shape hoverBox;
+        transient Shape hoverBox;
 
         ExploredDetailPane(SystemPanel p) {
             parent = p;

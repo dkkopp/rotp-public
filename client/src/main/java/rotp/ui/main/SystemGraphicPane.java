@@ -38,8 +38,8 @@ public class SystemGraphicPane extends BasePanel implements MouseMotionListener,
     private static final long serialVersionUID = 1L;
     private boolean showSpyData = false;
     SystemPanel parent;
-    Ellipse2D starCircle = new Ellipse2D.Float();
-    Ellipse2D planetCircle = new Ellipse2D.Float();
+    transient Ellipse2D starCircle = new Ellipse2D.Float();
+    transient Ellipse2D planetCircle = new Ellipse2D.Float();
     Rectangle stargateBox = new Rectangle();
     int currentHover = 0;
     public boolean showPopulation = false;

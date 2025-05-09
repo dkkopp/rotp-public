@@ -61,11 +61,11 @@ public class AlienSystemPanel extends SystemPanel {
     private class DetailPane extends BasePanel implements MouseMotionListener, MouseListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
         SystemPanel parent;
-        Shape textureClip;
+        transient Shape textureClip;
         Empire displayEmp;
         Rectangle nameBox = new Rectangle();
         Rectangle flagBox = new Rectangle();
-        Shape hoverBox;
+        transient Shape hoverBox;
 
         DetailPane(SystemPanel p) {
             parent = p;

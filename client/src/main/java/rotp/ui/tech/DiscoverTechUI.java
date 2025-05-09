@@ -64,7 +64,7 @@ public class DiscoverTechUI extends FadeInPanel implements MouseListener, MouseM
     private int background;
     private boolean researchedTech = false;
     String title;
-    private Tech tech;
+    transient private Tech tech;
     private StarSystem system;
     private Empire sourceEmpire;
     private Empire frameEmpire1;
@@ -86,7 +86,7 @@ public class DiscoverTechUI extends FadeInPanel implements MouseListener, MouseM
     final static Color dialogTextBackC = new Color(19,19,19);
     static Color dialogTextFore =new Color(233,233,233);
 
-    private LinearGradientPaint frameBackC1, frameBackC2, allocateBackC;
+    transient private LinearGradientPaint frameBackC1, frameBackC2, allocateBackC;
 
     Rectangle button1 = new Rectangle();
     Rectangle button2 = new Rectangle();
@@ -765,7 +765,7 @@ public class DiscoverTechUI extends FadeInPanel implements MouseListener, MouseM
             return;
 
         advanceFade();
-        holoPct += .1;
+        holoPct += .1f;
         repaint();
     }
 

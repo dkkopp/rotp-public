@@ -39,7 +39,7 @@ import rotp.ui.map.IMapHandler;
 public class UnexploredSystemPanel extends SystemPanel implements MouseMotionListener, MouseListener, MouseWheelListener {
     private static final long serialVersionUID = 1L;
     Rectangle flagBox = new Rectangle();
-    Shape hoverBox;
+    transient Shape hoverBox;
 
     public UnexploredSystemPanel(SpriteDisplayPanel p) {
         parentSpritePanel = p;
@@ -150,7 +150,7 @@ public class UnexploredSystemPanel extends SystemPanel implements MouseMotionLis
                 g.fillRect(0,0,w,h);
             }
                 
-            Graphics2D g2 = (Graphics2D) g;
+            Graphics2D g2 = g;
             drawStar(g2, sys.starType(), s40, getWidth()/2, getHeight()/2);
 
             int sz = s60;

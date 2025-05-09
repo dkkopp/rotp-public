@@ -50,7 +50,7 @@ public class ManageSpiesUI extends BasePanel implements MouseListener, MouseWhee
     private static final Color unselectedC = new Color(112,85,68);
 
     final RacesUI parent;
-    private Shape hoverBox, hoverButton;
+    transient private Shape hoverBox, hoverButton;
     int dragY;
     int[] ptX = new int[3];
     int[] ptY = new int[3];
@@ -59,15 +59,15 @@ public class ManageSpiesUI extends BasePanel implements MouseListener, MouseWhee
     final Rectangle listScroller = new Rectangle();
     int listY, listYMax;
     int col1W, col2W, col3W, col4W;
-    private LinearGradientPaint largeGreenBackC;
-    Shape textureClip;
-    List<Rectangle> spendingBoxes = new ArrayList<>();
-    List<Rectangle> missionBoxes = new ArrayList<>();
-    List<Polygon> spendingIncr = new ArrayList<>();
-    List<Polygon> spendingDecr = new ArrayList<>();
-    List<Polygon> missionIncr = new ArrayList<>();
-    List<Polygon> missionDecr = new ArrayList<>();
-    List<EmpireView> empireViews = new ArrayList<>();
+    transient private LinearGradientPaint largeGreenBackC;
+    transient Shape textureClip;
+    transient List<Rectangle> spendingBoxes = new ArrayList<>();
+    transient List<Rectangle> missionBoxes = new ArrayList<>();
+    transient List<Polygon> spendingIncr = new ArrayList<>();
+    transient List<Polygon> spendingDecr = new ArrayList<>();
+    transient List<Polygon> missionIncr = new ArrayList<>();
+    transient List<Polygon> missionDecr = new ArrayList<>();
+    transient List<EmpireView> empireViews = new ArrayList<>();
     float totalPlanetaryProduction;
 
     public ManageSpiesUI(RacesUI p) {

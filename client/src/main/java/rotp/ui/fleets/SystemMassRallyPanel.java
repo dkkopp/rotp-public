@@ -78,7 +78,7 @@ public class SystemMassRallyPanel extends SystemPanel {
     protected BasePanel bottomPane() { return new SystemRallyFooterPane(); }
     class SystemRallyHeaderPane extends BasePanel {
         private static final long serialVersionUID = 1L;
-        Shape arrow;
+        transient Shape arrow;
         int xPts[];
         int yPts[];
         public SystemRallyHeaderPane() {
@@ -134,7 +134,7 @@ public class SystemMassRallyPanel extends SystemPanel {
         private Rectangle hoverBox;
         private final Rectangle cancelBox = new Rectangle();
         private final Rectangle startBox = new Rectangle();
-        Shape textureClip;
+        transient Shape textureClip;
         public SystemRallyFooterPane() {
             initModel();
         }

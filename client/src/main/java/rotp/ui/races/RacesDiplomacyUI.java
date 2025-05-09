@@ -69,9 +69,9 @@ public final class RacesDiplomacyUI extends BasePanel implements MouseListener, 
     int incidentY, incidentYMax;
     int relationsY, relationsYMax;
     int dragY;
-    private LinearGradientPaint incidentTitleBackground;
-    private LinearGradientPaint backGradient;
-    private LinearGradientPaint embassyBackground, embassyDisabledBackground;
+    transient private LinearGradientPaint incidentTitleBackground;
+    transient private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint embassyBackground, embassyDisabledBackground;
     private final Rectangle embassyBox = new Rectangle();
     private final Rectangle incidentListBox = new Rectangle();
     private final Rectangle incidentScroller = new Rectangle();
@@ -88,7 +88,7 @@ public final class RacesDiplomacyUI extends BasePanel implements MouseListener, 
     int[] ptY = new int[3];
     private final HashMap<DiplomaticIncident, Empire> incidentMap = new HashMap<>();
 
-    private Shape hoverShape;
+    transient private Shape hoverShape;
     
     public RacesDiplomacyUI(RacesUI p) {
         parent = p;
@@ -600,7 +600,7 @@ public final class RacesDiplomacyUI extends BasePanel implements MouseListener, 
         g.setFont(narrowFont(18));
         String spending = text("RACES_DIPLOMACY_RECALLED_DIPLOMAT");
         drawString(g,spending, x+s20, y2);
-        int amt = (int) 0;
+        int amt = 0;
         
         g.setFont(narrowFont(16));
         str2 = str(recalls);

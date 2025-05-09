@@ -260,7 +260,7 @@ public class LanguageManager implements Base {
             name = n;
             font = f;
             logographic = logo;
-            locale = new Locale(dir);
+            locale = Locale.of(dir);
             digits = d;
             if (o.trim().equalsIgnoreCase("RT"))
                 orientation = ComponentOrientation.RIGHT_TO_LEFT;

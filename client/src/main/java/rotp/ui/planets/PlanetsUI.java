@@ -101,7 +101,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
 
     private int pad = 10;
     private int helpFrame = 0;
-    private List<StarSystem> displayedSystems;
+    transient private List<StarSystem> displayedSystems;
     private final HashMap<Integer, DataView> views = new HashMap<>();
 
     Rectangle ecologyBox = new Rectangle();
@@ -122,7 +122,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
     private final PlanetsUI instance;
     private final PlanetListingUI planetListing;
     private PlanetDataListingUI listingUI;
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
 
     public PlanetsUI() {
         palette = Palette.named("Brown");
@@ -1119,8 +1119,8 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
     class EmpireInfoGraphicPane extends BasePanel implements ActionListener {
         private static final long serialVersionUID = 1L;
         SystemPanel parent;
-        Ellipse2D starCircle = new Ellipse2D.Float();
-        Ellipse2D planetCircle = new Ellipse2D.Float();
+        transient Ellipse2D starCircle = new Ellipse2D.Float();
+        transient Ellipse2D planetCircle = new Ellipse2D.Float();
         int currentHover = 0;
         EmpireInfoGraphicPane(SystemPanel p) {
             parent = p;
@@ -1201,7 +1201,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
         private final Rectangle shipNameBox = new Rectangle();
         private final Polygon prevDesign = new Polygon();
         private final Polygon nextDesign = new Polygon();
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         private final Polygon upArrow = new Polygon();
         private final Polygon downArrow = new Polygon();
         private final int upButtonX[] = new int[3];
@@ -1635,7 +1635,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
         private static final long serialVersionUID = 1L;
         SystemPanel parent;
         private final Rectangle transferBox = new Rectangle();
-        private Shape hoverBox;
+        transient private Shape hoverBox;
 
         private final Color textColor = newColor(204,204,204);
         ColonyTransferFunds(SystemPanel p) {
@@ -1814,7 +1814,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
     }
     class SpendingCostsUI extends BasePanel {
         private static final long serialVersionUID = 1L;
-        Shape textureClip;
+        transient Shape textureClip;
         public SpendingCostsUI() {
             init();
         }
@@ -1925,7 +1925,7 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
     }
     class TotalIncomeUI extends BasePanel {
         private static final long serialVersionUID = 1L;
-        Shape textureClip;
+        transient Shape textureClip;
         public TotalIncomeUI() {
             initModel();
         }
@@ -2006,13 +2006,13 @@ public class PlanetsUI extends BasePanel implements SystemViewer {
         private final Polygon rightArrow = new Polygon();
         private final Rectangle reserveBox = new Rectangle();
         private final Rectangle sliderBox = new Rectangle();
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         // polygon coordinates for left & right increment buttons
         private final int leftButtonX[] = new int[3];
         private final int leftButtonY[] = new int[3];
         private final int rightButtonX[] = new int[3];
         private final int rightButtonY[] = new int[3];
-        Shape textureClip;
+        transient Shape textureClip;
         public ReserveUI() {
             initModel();
         }

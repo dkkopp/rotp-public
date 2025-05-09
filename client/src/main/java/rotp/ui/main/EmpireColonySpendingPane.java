@@ -51,7 +51,7 @@ public class EmpireColonySpendingPane extends BasePanel {
 
     EmpireSliderPane shipSlider, defSlider, indSlider, ecoSlider, researchSlider;
 
-    private final SystemViewer parent;
+    transient private final SystemViewer parent;
     private GalaxyMapPanel mapListener;
     public EmpireColonySpendingPane(SystemViewer p, Color c0, Color text, Color hi, Color lo) {
         parent = p;
@@ -137,7 +137,7 @@ public class EmpireColonySpendingPane extends BasePanel {
         private final Polygon rightArrow = new Polygon();
         private final Rectangle labelBox = new Rectangle();
         private final Rectangle sliderBox = new Rectangle();
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         // polygon coordinates for left & right increment buttons
         private final int leftButtonX[] = new int[3];
         private final int leftButtonY[] = new int[3];

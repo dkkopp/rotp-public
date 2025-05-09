@@ -49,7 +49,7 @@ public class EmpireColonyInfoPane extends BasePanel {
     Color darkC;
     Color textC;
     Color backC;
-    SystemViewer parentUI;
+    transient SystemViewer parentUI;
     EmpireBasesPane basesPane;
     public EmpireColonyInfoPane(SystemViewer p, Color backColor, Color borderColor, Color textColor, Color darkTextColor) {
         parentUI = p;
@@ -97,7 +97,7 @@ public class EmpireColonyInfoPane extends BasePanel {
     }
     abstract class EmpireDataPane extends BasePanel {
         private static final long serialVersionUID = 1L;
-        protected Shape hoverBox;
+        transient protected Shape hoverBox;
         protected Rectangle basesBox = new Rectangle();
         EmpireDataPane() {
             init();
@@ -208,7 +208,7 @@ public class EmpireColonyInfoPane extends BasePanel {
         protected int maxValue(List<Colony> colonies) { 
             int val = 0;
             for (Colony c: colonies)
-                val += c.maxSize(); 
+                val += (int) c.maxSize(); 
             return val;
         }
     }
@@ -253,14 +253,14 @@ public class EmpireColonyInfoPane extends BasePanel {
         protected int value(List<Colony> colonies) { 
             int val = 0;
             for (Colony c: colonies)
-                val += (int) c.defense().shieldLevel(); 
+                val += c.defense().shieldLevel(); 
             return val;
         }
         @Override
         protected int maxValue(List<Colony> colonies) { 
             int val = 0;
             for (Colony c: colonies)
-                val += c.defense().maxShieldLevel(); 
+                val += (int) c.defense().maxShieldLevel(); 
             return val;
         }
         @Override
@@ -281,7 +281,7 @@ public class EmpireColonyInfoPane extends BasePanel {
         private final int downButtonX[] = new int[3];
         private final int downButtonY[] = new int[3];
         private boolean allowAdjust = true;
-        List<Colony> colonies = new ArrayList<>();
+        transient List<Colony> colonies = new ArrayList<>();
         private int maxBasesValue = 0;
         public EmpireBasesPane() {
             super();

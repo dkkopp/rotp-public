@@ -41,9 +41,9 @@ public final class RacesShipRenameUI extends BasePanel implements MouseListener,
     final static String CANCEL_ACTION = "cancel-input";
     final static String ACCEPT_ACTION = "accept-input";
 
-    private LinearGradientPaint cancelBackground;
-    private LinearGradientPaint createBackground;
-    private Shape hoverTarget;
+    transient private LinearGradientPaint cancelBackground;
+    transient private LinearGradientPaint createBackground;
+    transient private Shape hoverTarget;
     private final Rectangle cancelButtonArea = new Rectangle();
     private final Rectangle createButtonArea = new Rectangle();
 

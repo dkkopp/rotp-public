@@ -78,7 +78,7 @@ public class SystemMassTransportPanel  extends SystemPanel {
     protected BasePanel bottomPane() { return new SystemTransportFooterPane(); }
     class SystemTransportHeaderPane extends BasePanel {
         private static final long serialVersionUID = 1L;
-        Shape arrow;
+        transient Shape arrow;
         int xPts[];
         int yPts[];
         public SystemTransportHeaderPane() {
@@ -134,7 +134,7 @@ public class SystemMassTransportPanel  extends SystemPanel {
         private Rectangle hoverBox;
         private final Rectangle cancelBox = new Rectangle();
         private final Rectangle startBox = new Rectangle();
-        Shape textureClip;
+        transient Shape textureClip;
         public SystemTransportFooterPane() {
             initModel();
         }

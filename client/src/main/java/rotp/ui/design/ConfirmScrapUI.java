@@ -40,9 +40,9 @@ public final class ConfirmScrapUI extends BasePanel implements MouseListener, Mo
     private static final Color brownEdgeC = new Color(59,44,30);
     private static final Color brownMidC = new Color(93,70,48);
 
-    private LinearGradientPaint cancelBackground;
-    private LinearGradientPaint scrapBackground;
-    private Shape hoverTarget;
+    transient private LinearGradientPaint cancelBackground;
+    transient private LinearGradientPaint scrapBackground;
+    transient private Shape hoverTarget;
     private final Rectangle cancelButtonArea = new Rectangle();
     private final Rectangle scrapButtonArea = new Rectangle();
 

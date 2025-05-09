@@ -129,8 +129,8 @@ public class SystemInfoPanel extends SystemPanel implements MouseMotionListener 
     class EmpireInfoGraphicPane extends BasePanel implements ActionListener {
         private static final long serialVersionUID = 1L;
         SystemPanel parent;
-        Ellipse2D starCircle = new Ellipse2D.Float();
-        Ellipse2D planetCircle = new Ellipse2D.Float();
+        transient Ellipse2D starCircle = new Ellipse2D.Float();
+        transient Ellipse2D planetCircle = new Ellipse2D.Float();
         int currentHover = 0;
         EmpireInfoGraphicPane(SystemPanel p) {
             parent = p;
@@ -184,7 +184,7 @@ public class SystemInfoPanel extends SystemPanel implements MouseMotionListener 
     }
     final class SystemSummaryPane extends BasePanel implements MouseMotionListener, MouseListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
-        Shape hoverBox;
+        transient Shape hoverBox;
         Rectangle flagBox = new Rectangle();
         SystemSummaryPane() {
             setBackground(unselectedC);

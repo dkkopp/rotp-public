@@ -69,10 +69,10 @@ public class AllocateTechUI extends BasePanel implements MouseListener, MouseMot
     static final Color knownTechC = new Color(75,99,51);
     static final Color techUnderscoreC = new Color(255,255,255,90);
 
-    private LinearGradientPaint backGradient;
+    transient private LinearGradientPaint backGradient;
     private ExitTechButton exitButton;
     private final Rectangle equalizeButton = new Rectangle();
-    private Shape hoverBox;
+    transient private Shape hoverBox;
     Rectangle techBox = new Rectangle();
     Rectangle helpBox = new Rectangle();
     private final Rectangle[] catBox = new Rectangle[TechTree.NUM_CATEGORIES];
@@ -82,9 +82,9 @@ public class AllocateTechUI extends BasePanel implements MouseListener, MouseMot
     private final Rectangle[] sliderBox = new Rectangle[TechTree.NUM_CATEGORIES];
     private final Rectangle treeBox = new Rectangle();
     private final Rectangle catArea = new Rectangle();
-    private final Map<RoundRectangle2D.Float,String> techSelections = new HashMap<>();
+    transient private final Map<RoundRectangle2D.Float,String> techSelections = new HashMap<>();
     private Point2D.Float[] currentTechs = new Point2D.Float[TechTree.NUM_CATEGORIES];
-    private BufferedImage visualTree;
+    transient private BufferedImage visualTree;
     int treeX, treeY;
     int dragX, dragY;
     float totalPlanetaryResearch = -1;
@@ -337,7 +337,7 @@ public class AllocateTechUI extends BasePanel implements MouseListener, MouseMot
         int totalSpending = (int) totalPlanetaryResearchSpending;
         int totalResearch = 0;       
         for (int i=0;i<cats;i++)
-             totalResearch += tree.category(i).currentResearch(totalPlanetaryResearch());
+             totalResearch += (int) tree.category(i).currentResearch(totalPlanetaryResearch());
 
         int y6 = subPanelY+s93;
         g.setFont(plainFont(25));
@@ -687,7 +687,7 @@ public class AllocateTechUI extends BasePanel implements MouseListener, MouseMot
         int w = max(treeBox.width, (tierW*(maxQ+1))+(tierGap*(maxQ+2)));
         int h = treeBox.height;
         visualTree = newOpaqueImage(w, h);
-        Graphics2D g = (Graphics2D) visualTree.createGraphics();
+        Graphics2D g = visualTree.createGraphics();
         setFontHints(g);
         Tech[] techs = new Tech[maxTechLvl+1];
         for (String techId: allT) {

@@ -65,16 +65,16 @@ public abstract class DesignSelectionUI extends BasePanel implements MouseListen
     private final Color arrowColorLo = Color.lightGray;
 
     HashMap<Rectangle, ShipComponent> spriteMap = new HashMap<>();
-    List<Rectangle> selectionBoxes = new ArrayList<>();
-    List<Rectangle> sortingBoxes = new ArrayList<>();
-    List<ShipComponent> components = new ArrayList<>();
+    transient List<Rectangle> selectionBoxes = new ArrayList<>();
+    transient List<Rectangle> sortingBoxes = new ArrayList<>();
+    transient List<ShipComponent> components = new ArrayList<>();
 
     int startIndex = 0;
     int hoverComp = -1;
     int hoverHeader = -1;
     String title;
-    List<String> headers = new ArrayList<>();
-    List<Integer> columnWidths = new ArrayList<>();
+    transient List<String> headers = new ArrayList<>();
+    transient List<Integer> columnWidths = new ArrayList<>();
 
     int MAX_LIST_SIZE = 30;
     int numToDisplay = 0;

@@ -255,7 +255,7 @@ public class TransportDeploymentPanel extends SystemPanel {
     }
     public class TransportDetailPane extends SystemPanel implements MouseListener, MouseMotionListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
-        private Shape hoverBox, hoverBox2;
+        transient private Shape hoverBox, hoverBox2;
         public TransportDetailPane(SpriteDisplayPanel p) {
             parentSpritePanel = p;
             init();
@@ -302,7 +302,7 @@ public class TransportDeploymentPanel extends SystemPanel {
     }
     class FromSystemDetailPane extends BasePanel implements MouseListener, MouseMotionListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
-        Shape arrow;
+        transient Shape arrow;
         int maxSendingSize = 0;
         // polygon coordinates for left & right increment buttons
         private final int leftButtonX[] = new int[3];
@@ -312,8 +312,8 @@ public class TransportDeploymentPanel extends SystemPanel {
         private final Polygon leftArrow = new Polygon();
         private final Polygon rightArrow = new Polygon();
         private final Rectangle sliderBox = new Rectangle();
-        private Shape hoverBox;
-        Shape textureClip;
+        transient private Shape hoverBox;
+        transient Shape textureClip;
 
         public FromSystemDetailPane() {
             init();
@@ -564,7 +564,7 @@ public class TransportDeploymentPanel extends SystemPanel {
     }
     class ToSystemDetailPane extends BasePanel implements MouseMotionListener, MouseListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
-        Shape hoverBox;
+        transient Shape hoverBox;
         Rectangle flagBox = new Rectangle();
         public ToSystemDetailPane() {
             init();
@@ -764,17 +764,17 @@ public class TransportDeploymentPanel extends SystemPanel {
         private final TransportDeploymentPanel parent;
         private final Color buttonShadowC = new Color(33,33,33);
         int leftM, midM1, midM2, rightM;
-        private LinearGradientPaint fullGrayBackC;
-        private LinearGradientPaint largeGreenBackC;
-        private LinearGradientPaint largeRedBackC;
-        private LinearGradientPaint smallGrayBackC;
+        transient private LinearGradientPaint fullGrayBackC;
+        transient private LinearGradientPaint largeGreenBackC;
+        transient private LinearGradientPaint largeRedBackC;
+        transient private LinearGradientPaint smallGrayBackC;
         private boolean initted = false;
 
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         private final Rectangle cancelBox = new Rectangle();
         private final Rectangle sendBox = new Rectangle();
         private final Rectangle clearBox = new Rectangle();
-        Shape textureClip;
+        transient Shape textureClip;
         public TransportButtonPane(TransportDeploymentPanel p) {
             parent = p;
             init();

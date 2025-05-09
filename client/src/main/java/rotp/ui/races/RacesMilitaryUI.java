@@ -51,8 +51,8 @@ public final class RacesMilitaryUI extends BasePanel implements MouseListener, M
     private final Color brownDividerC = new Color(136,115,96);
 
     private final RacesUI parent;
-    private LinearGradientPaint backGradient;
-    private List<ShipView> ships;
+    transient private LinearGradientPaint backGradient;
+    transient private List<ShipView> ships;
     int dragY;
     int shipY, shipYMax;
     private final Rectangle shipListBox = new Rectangle();
@@ -60,9 +60,9 @@ public final class RacesMilitaryUI extends BasePanel implements MouseListener, M
     public static BufferedImage shipIconBackImg;
     private final RacesShipRenameUI renameShipUI;
 
-    private final Map<ShipDesign,Rectangle> renameBoxes = new HashMap<>();
+    transient private final Map<ShipDesign,Rectangle> renameBoxes = new HashMap<>();
     private Rectangle hoverNameBox;
-    private Shape hoverShape;
+    transient private Shape hoverShape;
     private final Polygon maxBasesIncr = new Polygon();
     private final Polygon maxBasesDecr = new Polygon();
     private final Rectangle maxBasesBox = new Rectangle();

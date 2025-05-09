@@ -80,7 +80,7 @@ public final class SabotageUI extends BasePanel implements MouseListener {
     static final int SHOW_ANIMATION = 2;
     static final int SHOW_RESULTS = 3;
 
-    LinearGradientPaint backGradient;
+    transient LinearGradientPaint backGradient;
     private BasePanel cardPane;
     private final CardLayout cardLayout = new CardLayout();
     private SabotageMission mission;
@@ -92,7 +92,7 @@ public final class SabotageUI extends BasePanel implements MouseListener {
     BasePanel titlePanel;
     BasePanel promptPanel;
     SabotageResultPanel resultPanel;
-    private final List<Sprite> controls = new ArrayList<>();
+    transient private final List<Sprite> controls = new ArrayList<>();
     int animationIndex = 0;
     int currentState;
     int destroyCount = 0;
@@ -100,7 +100,7 @@ public final class SabotageUI extends BasePanel implements MouseListener {
     int explosionFrame = 0;
     boolean inciteAudioPlayed = false;
     boolean exited = false;
-    SoundClip audioClip = null;
+    transient SoundClip audioClip = null;
     int repaintCount = 0;
 
     @Override
@@ -334,7 +334,7 @@ public final class SabotageUI extends BasePanel implements MouseListener {
     final class SpyDetailPane extends BasePanel {
         private static final long serialVersionUID = 1L;
         SystemPanel parent;
-        Shape textureClip;
+        transient Shape textureClip;
 
         SpyDetailPane(SystemPanel p) {
             parent = p;
@@ -455,15 +455,15 @@ public final class SabotageUI extends BasePanel implements MouseListener {
         private final Color greenMidC = new Color(70,93,48);
         private final Color redEdgeC = new Color(72,14,14);
         private final Color redMidC = new Color(126,28,28);
-        private LinearGradientPaint greenBackground;
-        private LinearGradientPaint redBackground;
-        private LinearGradientPaint grayBackground;
+        transient private LinearGradientPaint greenBackground;
+        transient private LinearGradientPaint redBackground;
+        transient private LinearGradientPaint grayBackground;
         private final Rectangle basesBox = new Rectangle();
         private final Rectangle factoriesBox = new Rectangle();
         private final Rectangle rebellionBox = new Rectangle();
         private final Rectangle noActionBox = new Rectangle();
-        private Shape hoverTarget;
-        Shape textureClip;
+        transient private Shape hoverTarget;
+        transient Shape textureClip;
         
         public SabotageButtonsPanel() {
             init();
@@ -722,8 +722,8 @@ public final class SabotageUI extends BasePanel implements MouseListener {
     }
     class SabotageResultPanel extends BasePanel {
         private static final long serialVersionUID = 1L;
-        private Image panelBuffer;
-        private List<Image> animationFrames;
+        transient private Image panelBuffer;
+        transient private List<Image> animationFrames;
         public void init() {
             Race r = mission.target().race();
             if (mission.isDestroyBases()) 
@@ -835,7 +835,7 @@ public final class SabotageUI extends BasePanel implements MouseListener {
     }
     class GalaxyMapPane extends BasePanel implements IMapHandler {
         private static final long serialVersionUID = 1L;
-        private LinearGradientPaint backGradient;
+        transient private LinearGradientPaint backGradient;
         public GalaxyMapPane() {
             init0();
         }

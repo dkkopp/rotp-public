@@ -609,11 +609,11 @@ public class FleetPanel extends BasePanel implements MapSpriteViewer {
     public class FleetDetailPane extends BasePanel implements MouseListener, MouseMotionListener, MouseWheelListener {
         private static final long serialVersionUID = 1L;
         private final Color fleetBackC = new Color(255,255,255,40);
-        private BufferedImage starImg;
+        transient private BufferedImage starImg;
         private final FleetPanel parent;
         private final Color buttonBackC = new Color(30,30,30);
         private int hoverStackNum = -1;
-        private Shape hoverBox, hoverBox2;
+        transient private Shape hoverBox, hoverBox2;
         private final Rectangle rallyBox = new Rectangle();
         private final Rectangle retreatBox = new Rectangle();
         private final Rectangle shipBox[] = new Rectangle[ShipDesignLab.MAX_DESIGNS];
@@ -625,7 +625,7 @@ public class FleetPanel extends BasePanel implements MapSpriteViewer {
         private final Rectangle maxBoxH[] = new Rectangle[ShipDesignLab.MAX_DESIGNS];
         private final Rectangle downBoxH[] = new Rectangle[ShipDesignLab.MAX_DESIGNS];
         private final Rectangle upBoxH[] = new Rectangle[ShipDesignLab.MAX_DESIGNS];
-        protected Shape textureClip;
+        transient protected Shape textureClip;
 
         public FleetDetailPane(FleetPanel p) {
             parent = p;
@@ -1171,8 +1171,8 @@ public class FleetPanel extends BasePanel implements MapSpriteViewer {
             int stackNum = fl.num(index);
             int currAdj = stackAdjustment[index];
             int newAdj = 1;
-            boolean shiftPressed = (e.getModifiers() & InputEvent.SHIFT_MASK) != 0;
-            boolean ctrlPressed = (e.getModifiers() & InputEvent.CTRL_MASK) != 0;
+            boolean shiftPressed = (e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0;
+            boolean ctrlPressed = (e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) != 0;
             
             int adjAmt = 1;
             if (shiftPressed)
@@ -1210,13 +1210,13 @@ public class FleetPanel extends BasePanel implements MapSpriteViewer {
         private final FleetPanel parent;
         private final Color buttonShadowC = new Color(33,33,33);
         int leftM, midM1, midM2, rightM;
-        private LinearGradientPaint fullGrayBackC;
-        private LinearGradientPaint largeGreenBackC;
-        private LinearGradientPaint largeRedBackC;
-        private LinearGradientPaint smallGrayBackC;
+        transient private LinearGradientPaint fullGrayBackC;
+        transient private LinearGradientPaint largeGreenBackC;
+        transient private LinearGradientPaint largeRedBackC;
+        transient private LinearGradientPaint smallGrayBackC;
         private boolean initted = false;
 
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         private final Rectangle cancelBox = new Rectangle();
         private final Rectangle deployBox = new Rectangle();
         private final Rectangle undeployBox = new Rectangle();

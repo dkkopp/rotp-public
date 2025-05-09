@@ -33,11 +33,11 @@ import rotp.ui.UserPreferences;
 
 public final class MainButtonPanel extends BasePanel implements MouseListener, MouseMotionListener {
     private static final long serialVersionUID = 1L;
-    private LinearGradientPaint buttonBackground;
-    private GradientPaint nextTurnBackground;
-    private GradientPaint nextTurnDisableBackground;
-    private GradientPaint nextTurnHoverBackground;
-    private GradientPaint nextTurnDepressedBackground;
+    transient private LinearGradientPaint buttonBackground;
+    transient private GradientPaint nextTurnBackground;
+    transient private GradientPaint nextTurnDisableBackground;
+    transient private GradientPaint nextTurnHoverBackground;
+    transient private GradientPaint nextTurnDepressedBackground;
 
     private final Color buttonEdgeC = new Color(34,53,102);
     private final Color buttonMidC = new Color(78,101,155);
@@ -66,7 +66,7 @@ public final class MainButtonPanel extends BasePanel implements MouseListener, M
 
     Rectangle[] buttonBox = new Rectangle[buttons.length];
     Rectangle nextTurnBox = new Rectangle();
-    Shape hoverBox, depressedBox;
+    transient Shape hoverBox, depressedBox;
 
     private final MainUI parent;
 

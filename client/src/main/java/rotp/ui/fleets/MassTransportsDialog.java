@@ -44,11 +44,11 @@ import rotp.util.Palette;
 public class MassTransportsDialog extends BasePanel {
     private static final long serialVersionUID = 1L;
     static int MAX_ROWS = 12;
-    Palette palette;
+    transient Palette palette;
     FleetUI topParent;
     TransportTargetListingUI listingUI;
     TransportTargetFooterUI footerUI;
-    List<StarSystem> sourceSystems = new ArrayList<>();
+    transient List<StarSystem> sourceSystems = new ArrayList<>();
     boolean synched = false;
     final Color backgroundC = new Color(76,57,41,192);
 
@@ -200,10 +200,10 @@ public class MassTransportsDialog extends BasePanel {
     }
     class TransportTargetListingUI extends SystemListingUI {
         private static final long serialVersionUID = 1L;
-        private DataView view;
+        transient private DataView view;
         private StarSystem selectedSystem;
         private final int[] sysIds;
-        private SystemSetTransportsColumn transportsCol;
+        transient private SystemSetTransportsColumn transportsCol;
         TransportTargetListingUI(BasePanel p) {
             super(p);
             sysIds = new int[MAX_ROWS];
@@ -273,14 +273,14 @@ public class MassTransportsDialog extends BasePanel {
         private static final long serialVersionUID = 1L;
         private final Color okButtonBdrC = new Color(158,165,156);
         private final Color cancelButtonBdrC = new Color(148,131,112);
-        private LinearGradientPaint synchBackC;
-        private LinearGradientPaint sendBackC;
-        private LinearGradientPaint cancelBackC;
+        transient private LinearGradientPaint synchBackC;
+        transient private LinearGradientPaint sendBackC;
+        transient private LinearGradientPaint cancelBackC;
         Rectangle synchButton = new Rectangle();
         Rectangle sendButton = new Rectangle();
         Rectangle cancelButton = new Rectangle();
         Rectangle hoverBox;
-        Area textureArea;
+        transient Area textureArea;
 
         public TransportTargetFooterUI() {
             initModel();

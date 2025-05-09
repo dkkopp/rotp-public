@@ -56,9 +56,9 @@ public class SelectNewTechUI extends BasePanel implements MouseListener, MouseMo
 
     HashMap<String, Rectangle> techBoxes = new HashMap<>();
     Rectangle techListBox = new Rectangle();
-    List<String> availableTechs;
+    transient List<String> availableTechs;
 
-    Shape hoverShape;
+    transient Shape hoverShape;
     Rectangle selectTechBox = new Rectangle();
 
     int techsY, techsYMax;

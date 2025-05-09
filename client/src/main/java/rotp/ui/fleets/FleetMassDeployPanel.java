@@ -221,7 +221,7 @@ public class FleetMassDeployPanel extends BasePanel {
     }
     class FleetDeployHeaderPane extends BasePanel {
         private static final long serialVersionUID = 1L;
-        Shape arrow;
+        transient Shape arrow;
         int xPts[];
         int yPts[];
         public FleetDeployHeaderPane() {

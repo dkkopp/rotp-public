@@ -294,8 +294,8 @@ public class SystemMassQueryPanel extends BasePanel {
         private final Rectangle shipNameBox = new Rectangle();
         private final Polygon prevDesign = new Polygon();
         private final Polygon nextDesign = new Polygon();
-        private Shape hoverBox;
-        Area textureArea;
+        transient private Shape hoverBox;
+        transient Area textureArea;
 
         public SystemAction() {
             initModel();

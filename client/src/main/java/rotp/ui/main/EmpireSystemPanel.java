@@ -201,7 +201,7 @@ public class EmpireSystemPanel extends SystemPanel {
         private final Rectangle shipNameBox = new Rectangle();
         private final Polygon prevDesign = new Polygon();
         private final Polygon nextDesign = new Polygon();
-        private Shape hoverBox;
+        transient private Shape hoverBox;
 
         private final Polygon upArrow = new Polygon();
         private final Polygon downArrow = new Polygon();
@@ -733,8 +733,8 @@ public class EmpireSystemPanel extends SystemPanel {
             int y = e.getY();
             
             if (limitBox.contains(x,y)) {
-                boolean shiftPressed = (e.getModifiers() & InputEvent.SHIFT_MASK) != 0;
-                boolean ctrlPressed = (e.getModifiers() & InputEvent.CTRL_MASK) != 0;
+                boolean shiftPressed = (e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0;
+                boolean ctrlPressed = (e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) != 0;
 
                 int adjAmt = 1;
                 if (shiftPressed)

@@ -77,12 +77,12 @@ public final class HistoryUI extends BasePanel implements MouseListener {
     static final Color sliderBackC = Color.black;
     static final Color sliderBorderC = Color.lightGray;
 
-    LinearGradientPaint backGradient ;
+    transient LinearGradientPaint backGradient ;
     private GalaxyMapPane mapPane;
     private GalaxyMapPanel map;
     HistoryButtonsPanel buttonsPanel;
     JLayeredPane layers = new JLayeredPane();
-    private final List<Sprite> controls = new ArrayList<>();
+    transient private final List<Sprite> controls = new ArrayList<>();
     int animationIndex = 0;
 
     Empire empire;
@@ -99,7 +99,7 @@ public final class HistoryUI extends BasePanel implements MouseListener {
     float[] xMax;
     float[] xSum;
     float[] ySum;
-    List<Empire> sortedEmpires = new ArrayList<>();
+    transient List<Empire> sortedEmpires = new ArrayList<>();
 
     @Override
     public boolean drawMemory()            { return true; }
@@ -359,16 +359,16 @@ public final class HistoryUI extends BasePanel implements MouseListener {
         private final Color greenMidC = new Color(70,93,48);
         private final Color redEdgeC = new Color(72,14,14);
         private final Color redMidC = new Color(126,28,28);
-        private LinearGradientPaint greenBackground;
-        private LinearGradientPaint redBackground;
-        private LinearGradientPaint grayBackground;
+        transient private LinearGradientPaint greenBackground;
+        transient private LinearGradientPaint redBackground;
+        transient private LinearGradientPaint grayBackground;
         private final Rectangle prevTurnBox = new Rectangle();
         private final Rectangle nextTurnBox = new Rectangle();
         private final Rectangle playBox = new Rectangle();
         private final Rectangle exitBox = new Rectangle();
         private final Rectangle sliderBox = new Rectangle();
-        private Shape hoverTarget;
-        Shape textureClip;
+        transient private Shape hoverTarget;
+        transient Shape textureClip;
         int sliderX, sliderW;
         
         public HistoryButtonsPanel() {
@@ -638,7 +638,7 @@ public final class HistoryUI extends BasePanel implements MouseListener {
     }
     class GalaxyMapPane extends BasePanel implements IMapHandler {
         private static final long serialVersionUID = 1L;
-        private LinearGradientPaint backGradient;
+        transient private LinearGradientPaint backGradient;
         public GalaxyMapPane() {
             init0();
         }

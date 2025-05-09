@@ -40,11 +40,11 @@ public class RacesSetColorUI extends BasePanel implements MouseListener, MouseMo
     private static final Color backC = new Color(112,85,68);
     private static final Color borderC = new Color(112,85,68,128);
 
-    Shape textureClip;
+    transient Shape textureClip;
     private int hoverIndex = -1;
-    private Shape hoverBox;
+    transient private Shape hoverBox;
     private RacesUI parent;
-    private final List<Shape> hoverShapes = new ArrayList<>();
+    transient private final List<Shape> hoverShapes = new ArrayList<>();
 
     public RacesSetColorUI(RacesUI p) {
         parent = p;

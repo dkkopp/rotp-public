@@ -61,7 +61,7 @@ public class SpriteDisplayPanel extends BasePanel implements SystemViewer, Mouse
     TransportPanel transportDisplayPane;
     RallyPointPanel shipRelocationPane;
 
-    IMapHandler parent;
+    transient IMapHandler parent;
 
     public SpriteDisplayPanel(IMapHandler p) {
         parent = p;

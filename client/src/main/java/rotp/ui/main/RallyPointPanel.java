@@ -215,10 +215,10 @@ public class RallyPointPanel extends SystemPanel {
     }
     class FromSystemDetailPane extends BasePanel  implements MouseListener, MouseMotionListener {
         private static final long serialVersionUID = 1L;
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         private final Rectangle retreatBox = new Rectangle();
-        Shape arrow;
-        Shape textureClip;
+        transient Shape arrow;
+        transient Shape textureClip;
         public FromSystemDetailPane() {
             initModel();
         }
@@ -421,17 +421,17 @@ public class RallyPointPanel extends SystemPanel {
         private final RallyPointPanel parent;
         private final Color buttonShadowC = new Color(33,33,33);
         int leftM, midM1, midM2, rightM;
-        private LinearGradientPaint fullGrayBackC;
-        private LinearGradientPaint largeGreenBackC;
-        private LinearGradientPaint largeRedBackC;
-        private LinearGradientPaint smallGrayBackC;
+        transient private LinearGradientPaint fullGrayBackC;
+        transient private LinearGradientPaint largeGreenBackC;
+        transient private LinearGradientPaint largeRedBackC;
+        transient private LinearGradientPaint smallGrayBackC;
         private boolean initted = false;
 
-        private Shape hoverBox;
+        transient private Shape hoverBox;
         private final Rectangle cancelBox = new Rectangle();
         private final Rectangle startBox = new Rectangle();
         private final Rectangle stopBox = new Rectangle();
-        Shape textureClip;
+        transient Shape textureClip;
         public RallyPointButtonPane (RallyPointPanel p) {
             parent = p;
             initModel();

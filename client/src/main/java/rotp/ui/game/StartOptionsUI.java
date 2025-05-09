@@ -43,21 +43,21 @@ public class StartOptionsUI extends BasePanel implements MouseListener, MouseMot
     Rectangle okBox = new Rectangle();
     Rectangle defaultBox = new Rectangle();
     BasePanel parent;
-    BaseText galaxyAgeText;
-    BaseText starDensityText;
-    BaseText nebulaeText;
-    BaseText randomEventsText;
-    BaseText planetQualityText;
-    BaseText terraformingText;
-    BaseText colonizingText;
-    BaseText councilWinText;
-    BaseText randomizeAIText;
-    BaseText autoplayText;
-    BaseText researchRateText;
-    BaseText warpSpeedText;
-    BaseText fuelRangeText;
-    BaseText techTradingText;
-    BaseText aiHostilityText;
+    transient BaseText galaxyAgeText;
+    transient BaseText starDensityText;
+    transient BaseText nebulaeText;
+    transient BaseText randomEventsText;
+    transient BaseText planetQualityText;
+    transient BaseText terraformingText;
+    transient BaseText colonizingText;
+    transient BaseText councilWinText;
+    transient BaseText randomizeAIText;
+    transient BaseText autoplayText;
+    transient BaseText researchRateText;
+    transient BaseText warpSpeedText;
+    transient BaseText fuelRangeText;
+    transient BaseText techTradingText;
+    transient BaseText aiHostilityText;
     
     public StartOptionsUI() {
         init0();

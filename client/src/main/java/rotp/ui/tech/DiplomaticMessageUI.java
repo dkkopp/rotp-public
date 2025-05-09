@@ -64,14 +64,14 @@ public class DiplomaticMessageUI extends FadeInPanel implements MouseListener, M
 
     static Border outerTextAreaBorder, innerTextAreaBorder;
 
-    private Image flagPole;
+    transient private Image flagPole;
 
     private final Rectangle[] selectBoxes = new Rectangle[DiplomaticMessage.MAX_SELECTIONS];
     private int selectHover = -1;
 
     Empire diplomatEmpire;
-    Image flag, dialogBox;
-    DiplomaticMessage message;
+    transient Image flag, dialogBox;
+    transient DiplomaticMessage message;
     String messageRemark, messageRemarkDetail;
 
     int talkTimeMs = 5000;
@@ -520,7 +520,7 @@ public class DiplomaticMessageUI extends FadeInPanel implements MouseListener, M
             return;
 
         advanceFade();
-        holoPct += .1;
+        holoPct += .1f;
         if (!stillFading()) {
             if (!hasSpoken) {
                 hasSpoken = true;

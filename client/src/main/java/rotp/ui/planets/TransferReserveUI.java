@@ -44,8 +44,8 @@ public final class TransferReserveUI extends BasePanel implements MouseListener,
     private static final Color okButtonBdrC = new Color(158,165,156);
     private static final Color cancelButtonBdrC = new Color(184,165,143);
 
-    private LinearGradientPaint largeRedBackC;
-    private LinearGradientPaint largeGreenBackC;
+    transient private LinearGradientPaint largeRedBackC;
+    transient private LinearGradientPaint largeGreenBackC;
 
     private static final Color sliderButtonColor = Color.black;
     private static final Color sliderHighlightColor = new Color(255,255,255);
@@ -54,7 +54,7 @@ public final class TransferReserveUI extends BasePanel implements MouseListener,
 
     private StarSystem targetSystem;
 
-    private Shape hoverBox;
+    transient private Shape hoverBox;
     private boolean initted = false;
 
     private final Rectangle cancelButton =  new Rectangle();
@@ -71,7 +71,7 @@ public final class TransferReserveUI extends BasePanel implements MouseListener,
     private final int leftButtonY[] = new int[3];
     private final int rightButtonX[] = new int[3];
     private final int rightButtonY[] = new int[3];
-    Shape textureClip;
+    transient Shape textureClip;
 
     public TransferReserveUI() {
         initModel();
